@@ -19,13 +19,13 @@ var app = angular.module('PitstopApp', ["ngRoute"])
 app.config(function($routeProvider) {
   $routeProvider.
   when('/', {
-    templateUrl: 'partials/clientList.html',
+    templateUrl: 'partials/login.html',
     controller: "ClientListCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/', {
+  when('/client-list', {
     templateUrl: 'partials/clientList.html',
     controller: "ClientListCtrl",
     resolve: {
@@ -35,23 +35,23 @@ app.config(function($routeProvider) {
   when('/add-client', {
     templateUrl: 'partials/addClient.html',
     controller: "AddClient",
-    // resolve: {
-    //   // isAuth
-    // }
+    resolve: {
+      isAuth
+    }
   }).
   when('/intake', {
     templateUrl: 'partials/intakeView.html',
     controller: "WatchListCtrl",
-    // resolve: {
-    //   // isAuth
-    // }
+    resolve: {
+      isAuth
+    }
   }).
   when('/details', {
     templateUrl: 'partials/clientDetails.html',
     controller: "Ctrl",
-    // resolve: {
-    //   // isAuth
-    // }
+    resolve: {
+      isAuth
+    }
   }).
   when('/login', {
     templateUrl: 'partials/login.html',
@@ -73,5 +73,5 @@ app.run(($location) => {
     if (!authData) {
       $location.path("/login");
     }
-  })
+  });
   });

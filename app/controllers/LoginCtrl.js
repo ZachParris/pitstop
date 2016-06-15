@@ -1,4 +1,5 @@
-app.controller('LoginCtrl', function($scope, $location, firebaseURL, AuthFactory){
+"use strict";
+app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL, AuthFactory, DataFactory){
   let ref = new Firebase(firebaseURL);
 
 
@@ -26,14 +27,25 @@ app.controller('LoginCtrl', function($scope, $location, firebaseURL, AuthFactory
     });
   };
 
-    $scope.login = () => {
-    console.log("you clicked login");
+
+  $scope.login = () => {
     AuthFactory
       .authenticate($scope.account)
       .then(() => {
-        // $scope.hasUser = true;
-        $location.path("/")
+        DataFactory.getClientList().then(function(data) {
+          let clients = [];     
+          $scope.clients = data;
+          if($scope.clients.length === 0){
+            $location.path("/client-list");
+            $rootScope.addClientShow = false;
+            $rootScope.findClientShow = true;
+          }else{
+            $location.path("/watch-list");
+            $rootScope.addClientShow = true;
+            $rootScope.findClientShow = false;
+          };
+        });
         $scope.$apply();
-      })
+      });
   };
 });
