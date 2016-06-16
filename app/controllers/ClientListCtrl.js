@@ -4,6 +4,7 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
     DataFactory.getClientList().then(function(itemCollection){
         console.log("itemCollection from promise", itemCollection);
         $scope.clients = itemCollection;
+        console.log("clients", $scope.clients);
     });
 
     $scope.displayClients = function() {
@@ -15,6 +16,7 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
                     $rootScope.findListShow = false;
                     $rootScope.addClientShow = true;
                 }
+                console.log("client?", $scope.clients);
             });
         }
         };

@@ -35,14 +35,17 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
         DataFactory.getClientList().then(function(data) {
           let clients = [];     
           $scope.clients = data;
+          console.log("clients", $scope.clients.length);
           if($scope.clients.length === 0){
-            $location.path("/client-list");
+            console.log("#");
             $rootScope.addClientShow = false;
             $rootScope.findClientShow = true;
+            $location.url("/add-client");
           }else{
-            $location.path("/watch-list");
+            console.log("yeah");
             $rootScope.addClientShow = true;
             $rootScope.findClientShow = false;
+            $location.path("#/client-list");
           };
         });
         $scope.$apply();

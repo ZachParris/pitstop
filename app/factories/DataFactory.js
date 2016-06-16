@@ -1,31 +1,26 @@
 "use strict";
-app.factory("DataFactory", function($q, $http, firebaseURL, AuthFactory) {
-	var getClientList = function() {
-    let array = [];
-    var user = AuthFactory.getUser();
-    return $q(function(resolve, reject) {
-      $http.get(`${firebaseURL}clients.json`)
-        .success(function(clientsObject) {
-          var clientList = clientsObject;
-          Object.keys(clientList).forEach(function(client) {
-            if (clientList[client].uid === user.uid && clientList[client].Rating < 1) {
-              clientList[client].id = client;
-              array.push(clientList[client]);
-            }
-          });
-          resolve(array);
-        })
-        .error(function(error) {
-          reject(error);
-        });
-    });
-  };
+app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
 
+	var getClientList = function() {
+    let clients = [];
+    var user = AuthFactory.getUser();
+   return new Promise((resolve, reject) => {
+      $http.get(`${firebaseURL}clients.json`)
+        .success(function(clientObject) {
+			var clientDataList = clientObject;
+			Object.keys(clientDataList).forEach(function(key){
+				clientDataList[key].id=key;
+				clients.push(clientDataList[key]);
+					});
+          resolve(clients);
+          });
+        });
+  };
 
 
   var postNewClient = function(newClient) {
     var user = AuthFactory.getUser();
-    return $q(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       $http.post(
           `${firebaseURL}clients.json`,
           JSON.stringify({

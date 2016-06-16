@@ -19,7 +19,7 @@ var app = angular.module('PitstopApp', ["ngRoute"])
 app.config(function($routeProvider) {
   $routeProvider.
   when('/', {
-    templateUrl: 'partials/login.html',
+    templateUrl: 'partials/clientList.html',
     controller: "ClientListCtrl",
     resolve: {
       isAuth
@@ -73,5 +73,5 @@ app.run(($location) => {
     if (!authData) {
       $location.path("/login");
     }
-  });
+  })
   });
