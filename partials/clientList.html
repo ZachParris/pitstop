@@ -1,13 +1,13 @@
 <div class="row login">
   <div class="col s4 offset-s4">
     <h1>Pitstop</h1>
-    <a class="waves-effect waves-light btn">Add New</a>
+    <button ng-click="addNewClient()" class="waves-effect waves-light btn">Add New</button>
   </div>
   <div>
 
 <div class="row search-div">
    <div class="col s4 offset-s4 search-input">
-      <input type="text" placeholder="Search Clients" ng-model="searchClients">
+      <input type="text" placeholder="Search Clients" ng-model="searchText">
    </div>
 </div>
 
@@ -19,7 +19,6 @@
             <div class="col s12 m6 l3">{{thingy.email}}</div>
             <div class="col s12 m6 l3">{{thingy.phone}}</div>
             <div class="col s12 m6 l3">{{thingy.address}}</div>
-            <!-- <div class="col s12 m6 l3"></div> -->
         </div>
     </div>
 

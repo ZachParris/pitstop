@@ -19,14 +19,12 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
 
 
   var postNewClient = function(newClient) {
-    var user = AuthFactory.getUser();
     return new Promise((resolve, reject) => {
       $http.post(
           `${firebaseURL}clients.json`,
           JSON.stringify({
-            Name: newClient.Name,
-            Email: newClient.Email,
-            uid: user.uid,
+            name: newClient.name,
+            email: newClient.email,
             phone: newClient.phone,
             id: null,
             address: newClient.address
