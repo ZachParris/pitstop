@@ -1,6 +1,5 @@
-
+"use strict";
 app.controller("AddClientCtrl", function($scope, $location, DataFactory) {
-	
     $scope.newClients = {
         name: "",
         email: "",
@@ -10,19 +9,13 @@ app.controller("AddClientCtrl", function($scope, $location, DataFactory) {
     };
       
     $scope.addNewClients = function(){
-        console.log($scope.newClients.email);
         DataFactory.postNewClient($scope.newClients)
-            .then(function successCallback(response) {
-                console.log("resp", response);
-                $location.url("/client-list");
+            .then((response) => {
+                $location.url("/client/list");
+                console.log("response", response);
+                // DataFactory.getClientList();
             });
     };
-
-    $scope.test = function() {
-        console.log("help");
-    };
-    $scope.test();
-  
 });
 
 

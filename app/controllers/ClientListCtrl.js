@@ -4,11 +4,10 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
     DataFactory.getClientList().then(function(itemCollection){
         console.log("itemCollection from promise", itemCollection);
         $scope.clients = itemCollection;
-        console.log("clients", $scope.clients);
     });
 
     $scope.displayClients = function() {
-        if($location.path() === "/client-list"){
+        if($location.path() === "/client/list"){
             DataFactory.getClientList().then(function(data) {
             $scope.clients = [];
                 $scope.clients = data;
@@ -16,11 +15,10 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
                     $rootScope.findListShow = false;
                     $rootScope.addClientShow = true;
                 }
-                console.log("client?", $scope.clients);
             });
         }
         };
-        $scope.displayClients();
+            $scope.displayClients();
 
     
     });

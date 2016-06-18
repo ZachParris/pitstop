@@ -25,35 +25,35 @@ app.config(function($routeProvider) {
       isAuth
     }
   }).
-  when('/clients/client-list', {
+  when('/client/list', {
     templateUrl: 'partials/clientList.html',
     controller: "ClientListCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/add-client', {
+  when('/client/add', {
     templateUrl: 'partials/addClient.html',
     controller: "AddClientCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/clients/intake', {
+  when('/intake', {
     templateUrl: 'partials/intakeView.html',
-    controller: "WatchListCtrl",
+    controller: "IntakeCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/clients/client-details', {
+  when('/client/:id', {
     templateUrl: 'partials/clientDetails.html',
     controller: "ClientDetailCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/clients/service-details', {
+  when('/intake/:id', {
     templateUrl: 'partials/serviceDetails.html',
     controller: "ServiceDetailCtrl",
     resolve: {

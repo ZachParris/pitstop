@@ -48,6 +48,11 @@ app.factory("AuthFactory", function(firebaseURL) {
         uid: authData.uid
       });
 
+      // $rootScope.$auth.$onAuth(function(authData){
+      //   $rootScope.authData = authData;
+      //   $scope.$apply();
+      // });
+
       return new Promise((resolve, reject) => {
         $http
           .post(`${firebaseURL}/users.json`, stringifiedUser)

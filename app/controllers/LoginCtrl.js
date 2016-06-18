@@ -29,6 +29,7 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
 
 
   $scope.login = () => {
+    console.log("helllooo");
     AuthFactory
       .authenticate($scope.account)
       .then(() => {
@@ -40,15 +41,16 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
             console.log("#");
             $rootScope.addClientShow = false;
             $rootScope.findClientShow = true;
-            $location.url("/add-client");
+            $location.url("/client/add");
           }else{
             console.log("yeah");
             $rootScope.addClientShow = true;
             $rootScope.findClientShow = false;
-            $location.path("#/client-list");
+            console.log("root", $rootScope.addClientShow);
+            $location.url("/client/list");
           };
-        });
         $scope.$apply();
+        });
       });
   };
 });

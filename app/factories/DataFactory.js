@@ -21,8 +21,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
   var postNewClient = function(newClients) {
     let user = AuthFactory.getUser();
     return new Promise((resolve, reject) => {
-      $http.post(
-          `${firebaseURL}clients.json`,
+      $http.post(`${firebaseURL}clients.json`,
           JSON.stringify({
             name: newClients.name,
             email: newClients.email,
@@ -42,6 +41,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         })
     });
   };
+
   return {
     getClientList: getClientList,
     postNewClient: postNewClient 
