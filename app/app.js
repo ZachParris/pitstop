@@ -25,7 +25,7 @@ app.config(function($routeProvider) {
       isAuth
     }
   }).
-  when('/client-list', {
+  when('/clients/client-list', {
     templateUrl: 'partials/clientList.html',
     controller: "ClientListCtrl",
     resolve: {
@@ -34,21 +34,28 @@ app.config(function($routeProvider) {
   }).
   when('/add-client', {
     templateUrl: 'partials/addClient.html',
-    controller: "AddClient",
+    controller: "AddClientCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/intake', {
+  when('/clients/intake', {
     templateUrl: 'partials/intakeView.html',
     controller: "WatchListCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/details', {
+  when('/clients/client-details', {
     templateUrl: 'partials/clientDetails.html',
-    controller: "Ctrl",
+    controller: "ClientDetailCtrl",
+    resolve: {
+      isAuth
+    }
+  }).
+  when('/clients/service-details', {
+    templateUrl: 'partials/serviceDetails.html',
+    controller: "ServiceDetailCtrl",
     resolve: {
       isAuth
     }

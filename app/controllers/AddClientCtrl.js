@@ -1,19 +1,28 @@
 
-app.controller("AddClientCtrl", function($scope, $location, $rootScope, DataFactory, AuthFactory) {
-	$scope.newClients = {
+app.controller("AddClientCtrl", function($scope, $location, DataFactory) {
+	
+    $scope.newClients = {
         name: "",
         email: "",
         phone:"",
-        address: ""
+        address: "",
+        uid: ""
     };
       
-    $scope.addNewClient = function(){
-        DataFactory.postNewClient($scope.newClients.name, $scope.newClients.email, $scope.newClients.phone, $scope.newClients.address)
+    $scope.addNewClients = function(){
+        console.log($scope.newClients.email);
+        DataFactory.postNewClient($scope.newClients)
             .then(function successCallback(response) {
-                console.log(response);
+                console.log("resp", response);
                 $location.url("/client-list");
             });
     };
+
+    $scope.test = function() {
+        console.log("help");
+    };
+    $scope.test();
+  
 });
 
 

@@ -18,23 +18,28 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
   };
 
 
-  var postNewClient = function(newClient) {
+  var postNewClient = function(newClients) {
+    let user = AuthFactory.getUser();
     return new Promise((resolve, reject) => {
       $http.post(
           `${firebaseURL}clients.json`,
           JSON.stringify({
-            name: newClient.name,
-            email: newClient.email,
-            phone: newClient.phone,
-            id: null,
-            address: newClient.address
+            name: newClients.name,
+            email: newClients.email,
+            phone: newClients.phone,
+            address: newClients.address,
+            uid: user.id
           })
         )
         .success(
           function(objectFromFirebase) {
+            console.log("success");
             resolve(objectFromFirebase);
           }
-        );
+        )
+        .error(function(){
+          console.log("failed");
+        })
     });
   };
   return {
