@@ -42,8 +42,19 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
     });
   };
 
+  var deleteClient = function(itemId){
+    return new Promise((resolve, reject) => {
+      $http
+              .delete(`${firebaseURL}clients/${itemId}.json`)
+              .success(function(objectFromFirebase){
+                resolve(objectFromFirebase);
+              });
+    });
+  };
+
   return {
     getClientList: getClientList,
-    postNewClient: postNewClient 
+    postNewClient: postNewClient,
+    deleteClient: deleteClient 
   };
 });

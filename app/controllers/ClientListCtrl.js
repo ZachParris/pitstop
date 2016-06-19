@@ -20,5 +20,14 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
         };
             $scope.displayClients();
 
+    $scope.clientDelete = function(itemId){
+        console.log("itemId", itemId);
+        DataFactory.deleteClient(itemId).then(function(response){
+            DataFactory.getClientList().then(function(itemCollection){
+                $scope.clients = itemCollection;
+            });
+        });
+    };
+
     
     });
