@@ -1,16 +1,11 @@
-<div class="row">
-  <div class="col s4 offset-s4">
-  </div>
-  </div>
-
-
   <div class="row">
     <div class="col s4 offset-s4">
     	<h1>{{client.name}}</h1>
-			<button class="btn btn-info"><a ng-href="#/">Edit</a></button>
-			<h4>Email: {{client.email}}</h4>
-			<h4>Phone: {{client.phone}}</h4>
-			<h4>Address: {{client.address}}</h4>
+			<button class="btn btn-info" ng-href="#/client/add">Edit</button>
+			<div>{{client.email}}</div>
+			<div>{{client.phone}}</div>
+			<div>{{client.address}}</div>
+      <button ng-click="updateClientInfo()" class="btn">{{submitButtonText}}</button>
   </div>
   </div>
 

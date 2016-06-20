@@ -52,9 +52,39 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
     });
   };
 
+  var getSingleClient = function(itemId){
+    return new Promise((resolve, reject) => {
+      $http.get(`${firebaseURL}clients/${itemId}.json`)
+      .success(function(itemObject){
+          resolve(itemObject);
+        });
+    });
+  };
+
+  var updateClientInfo = function(itemId, newItem){
+        return new Promise((resolve, reject) => {
+            $http.put(`${firebaseURL}clients/${itemId}.json`)
+                JSON.stringify({
+                    name: newItem.name,
+                    email: newItem.email,
+                    phone: newItem.phone,
+                    address: newItem.address,
+                    uid: user.id
+                })
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+           }
+            );
+        });
+    };
+
+
   return {
     getClientList: getClientList,
     postNewClient: postNewClient,
-    deleteClient: deleteClient 
+    deleteClient: deleteClient,
+    getSingleClient: getSingleClient,
+    updateClientInfo: updateClientInfo 
   };
 });

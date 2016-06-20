@@ -1,4 +1,6 @@
 app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFactory, AuthFactory){
+    $scope.title = "Clients";
+    $scope.submitButtonText = "Add New";
     $scope.clients = [];
 
     DataFactory.getClientList().then(function(itemCollection){

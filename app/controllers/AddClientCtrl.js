@@ -1,5 +1,7 @@
 "use strict";
 app.controller("AddClientCtrl", function($scope, $location, DataFactory) {
+    $scope.title = "New Client";
+    $scope.submitButtonText = "Add New";
     $scope.newClients = {
         name: "",
         email: "",
