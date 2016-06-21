@@ -46,16 +46,16 @@ app.config(function($routeProvider) {
       isAuth
     }
   }).
-  when('/client/:id', {
-    templateUrl: 'partials/clientDetails.html',
-    controller: "ClientDetailCtrl",
+  when('/client/edit/:id', {
+    templateUrl: 'partials/addClient.html',
+    controller: "EditClientCtrl",
     resolve: {
       isAuth
     }
   }).
-  when('/client/edit/:id', {
-    templateUrl: 'partials/addClient.html',
-    controller: "EditClientCtrl",
+  when('/client/:id', {
+    templateUrl: 'partials/clientDetails.html',
+    controller: "ClientDetailCtrl",
     resolve: {
       isAuth
     }

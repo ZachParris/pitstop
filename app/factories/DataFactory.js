@@ -45,17 +45,18 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
   var deleteClient = function(itemId){
     return new Promise((resolve, reject) => {
       $http
-              .delete(`${firebaseURL}clients/${itemId}.json`)
-              .success(function(objectFromFirebase){
-                resolve(objectFromFirebase);
-              });
+          .delete(`${firebaseURL}clients/${itemId}.json`)
+          .success(function(objectFromFirebase){
+            resolve(objectFromFirebase);
+          });
     });
   };
 
-  var getSingleClient = function(itemId){
+  var getSingleClient = function(clientId){
     return new Promise((resolve, reject) => {
-      $http.get(`${firebaseURL}clients/${itemId}.json`)
+      $http.get(`${firebaseURL}clients/${clientId}.json`)
       .success(function(itemObject){
+        itemObject.id = clientId;
           resolve(itemObject);
         });
     });
@@ -63,7 +64,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
 
   var updateClientInfo = function(itemId, newItem){
         return new Promise((resolve, reject) => {
-            $http.put(`${firebaseURL}clients/${itemId}.json`)
+            $http.put(`${firebaseURL}clients/${clients.id}.json`)
                 JSON.stringify({
                     name: newItem.name,
                     email: newItem.email,

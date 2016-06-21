@@ -2,6 +2,7 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
     $scope.title = "Clients";
     $scope.submitButtonText = "Add New";
     $scope.clients = [];
+    // $scope.currentClients;
 
     DataFactory.getClientList().then(function(itemCollection){
         console.log("itemCollection from promise", itemCollection);

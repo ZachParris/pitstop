@@ -15,7 +15,7 @@ app.controller("AddClientCtrl", function($scope, $location, DataFactory) {
             .then((response) => {
                 $location.url("/client/list");
                 console.log("response", response);
-                // DataFactory.getClientList();
+                $scope.$apply();
             });
     };
 });

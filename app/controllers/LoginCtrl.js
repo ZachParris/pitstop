@@ -29,24 +29,20 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
 
 
   $scope.login = () => {
-    console.log("helllooo");
     AuthFactory
       .authenticate($scope.account)
       .then(() => {
         DataFactory.getClientList().then(function(data) {
           let clients = [];     
           $scope.clients = data;
-          console.log("clients", $scope.clients.length);
           if($scope.clients.length === 0){
             console.log("#");
             $rootScope.addClientShow = false;
             $rootScope.findClientShow = true;
             $location.url("/client/add");
           }else{
-            console.log("yeah");
             $rootScope.addClientShow = true;
             $rootScope.findClientShow = false;
-            console.log("root", $rootScope.addClientShow);
             $location.url("/client/list");
           };
         $scope.$apply();
