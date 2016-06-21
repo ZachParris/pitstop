@@ -8,6 +8,21 @@ app.controller("ClientListCtrl", function($scope, $location, DataFactory, AuthFa
         console.log("itemCollection from promise", itemCollection);
         $scope.clients = itemCollection;
     });
+  
+    $scope.clientDelete = function(clientId){
+        DataFactory.deleteClient(clientId).then(function(response){
+            DataFactory.getClientList().then(function(itemCollection){
+                $scope.clients = itemCollection;
+            });
+        });
+    };
+
+    $scope.inputChange = function(item){
+        DataFactory.updateClientInfo(item)
+            .then(function(response){
+                console.log(response);
+            });
+    };
 
     $scope.displayClients = function() {
         if($location.path() === "/client/list"){
@@ -23,13 +38,6 @@ app.controller("ClientListCtrl", function($scope, $location, DataFactory, AuthFa
         };
             $scope.displayClients();
 
-    $scope.clientDelete = function(clientId){
-        DataFactory.deleteClient(clientId).then(function(response){
-            DataFactory.getClientList().then(function(itemCollection){
-                $scope.clients = itemCollection;
-            });
-        });
-    };
 
 
 

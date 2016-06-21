@@ -62,7 +62,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
     });
   };
 
-  var updateClientInfo = function(itemId, newItem){
+  var updateClientInfo = function(id, newItem){
         return new Promise((resolve, reject) => {
             $http.put(`${firebaseURL}clients/${clients.id}.json`)
                 JSON.stringify({
