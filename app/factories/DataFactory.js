@@ -42,10 +42,10 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
     });
   };
 
-  var deleteClient = function(itemId){
+  var deleteClient = function(clientId){
     return new Promise((resolve, reject) => {
       $http
-          .delete(`${firebaseURL}clients/${itemId}.json`)
+          .delete(firebaseURL + "clients/" + clientId + ".json")
           .success(function(objectFromFirebase){
             resolve(objectFromFirebase);
           });

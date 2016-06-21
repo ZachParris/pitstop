@@ -1,8 +1,8 @@
-app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFactory, AuthFactory){
+app.controller("ClientListCtrl", function($scope, $location, DataFactory, AuthFactory){
     $scope.title = "Clients";
     $scope.submitButtonText = "Add New";
     $scope.clients = [];
-    // $scope.currentClients;
+    $scope.currentClient;
 
     DataFactory.getClientList().then(function(itemCollection){
         console.log("itemCollection from promise", itemCollection);
@@ -23,14 +23,15 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, DataFac
         };
             $scope.displayClients();
 
-    $scope.clientDelete = function(itemId){
-        console.log("itemId", itemId);
-        DataFactory.deleteClient(itemId).then(function(response){
+    $scope.clientDelete = function(clientId){
+        DataFactory.deleteClient(clientId).then(function(response){
             DataFactory.getClientList().then(function(itemCollection){
                 $scope.clients = itemCollection;
             });
         });
     };
+
+
 
     
     });

@@ -37,8 +37,8 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
           $scope.clients = data;
           if($scope.clients.length === 0){
             console.log("#");
-            $rootScope.addClientShow = false;
-            $rootScope.findClientShow = true;
+            $rootScope.addClientShow = true;
+            $rootScope.findClientShow = false;
             $location.url("/client/add");
           }else{
             $rootScope.addClientShow = true;
