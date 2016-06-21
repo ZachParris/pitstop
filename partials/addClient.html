@@ -1,0 +1,24 @@
+    
+<form class="col s4 offset-s4">
+    <h4>{{title}}</h4>
+    <div class="form-group">
+        <label class="white-text">Name</label>
+        <input type="text" class="form-control" placeholder="Client's name" ng-model="newClients.name">
+    </div>
+    <div class="form-group">
+        <label class="white-text">Email</label>
+        <input type="text" class="form-control" placeholder="example@gmail.com" ng-model="newClients.email">
+    </div>
+    <div class="form-group">
+        <label class="white-text">Phone</label>
+        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" ng-model="newClients.phone">
+    </div>
+    <div class="form-group">
+        <label class="white-text">Address</label>
+        <input type="text" class="form-control" placeholder="Street/City/State/Zip" ng-model="newClients.address">
+    </div>
+    <div class="text-center">
+        <button class="btn" ng-click="addNewClients()">{{submitButtonText}}</button>
+    </div>
+</form>
+

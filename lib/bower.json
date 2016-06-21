@@ -1,0 +1,20 @@
+{
+  "name": "lib",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ZachParris <zacharyjparris@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ZachParris/pitstop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularfire": "^2.0.1"
+  }
+}
