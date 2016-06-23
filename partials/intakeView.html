@@ -1,6 +1,6 @@
 <div class="row">
    <div class="col s4 offset-s4">
-      <h5>{{clients.name}</h5>
+      <h5>{{clients.name}}</h5>
    </div>
    <div>
       <div class="row">
@@ -11,23 +11,23 @@
             <div class="row">
                <div class="input-field col s2 push-s0">
                   <label class="white-text">Metal:</label>
-                  <input type="text" ng-model="details.metal">
+                  <input type="text" ng-model="newJob.metal">
                </div>
                <div class="input-field col s2 push-s1">
                   <label class="white-text">Stones:</label>
-                  <input type="text" ng-model="details.stones">
+                  <input type="text" ng-model="newJob.stones">
                </div>
                <div class="input-field col s2 push-s1">
                   <label class="white-text">Size:</label>
-                  <input type="text" ng-model="details.size">
+                  <input type="text" ng-model="newJob.size">
                </div>
                <div class="input-field col s2 push-s1">
                   <label class="white-text">Value:</label>
-                  <input type="text" ng-model="details.value">
+                  <input type="text" ng-model="newJob.value">
                </div>
                <div class="input-field col s8 push-s1">
-                  <label class="white-text">details:</label>
-                  <input type="text" ng-model="details.description">
+                  <label class="white-text">Description:</label>
+                  <input type="text" ng-model="newJob.description">
                </div>
             </div>
          </div>
@@ -40,34 +40,34 @@
                   <div class="row">
                <div class="input-field col s8 push-s1">
                   <label class="white-text">Center Stones:</label>
-                  <input type="text" ng-model="condition.centerStones">
+                  <input type="text" ng-model="newJob.centerStones">
                </div>
                <div class="input-field col s8 push-s1">
                   <label class="white-text">Prongs:</label>
-                  <input type="text" ng-model="condition.prongs">
+                  <input type="text" ng-model="newJob.prongs">
                </div>
                <div class="input-field col s8 push-s1">
                   <label class="white-text">Shanks:</label>
-                  <input type="text" ng-model="condition.shanks">
+                  <input type="text" ng-model="newJob.shanks">
                </div>
                <div class="input-field col s8 push-s1">
                   <label class="white-text">Other:</label>
-                  <input type="text" ng-model="condition.other">
+                  <input type="text" ng-model="newJob.other">
                </div>
                <div class="input-field col s8 push-s1">
-                  <label class="white-text">Pice Quote:</label>
-                  <input type="text" ng-model="condition.price">
+                  <label class="white-text">Price Quote:</label>
+                  <input type="text" ng-model="newJob.price">
                </div>
                <div class="input-field col s8 push-s1">
                   <label class="white-text">Completion Date:</label>
-                  <input type="text" ng-model="condition.date">
+                  <input type="text" ng-model="newJob.date">
                </div>
             </div>
                </form>
             </div>
             </div>
          <div class="col s2 offset-s5">
-            <a ng-click="intakeCondition()" class="btn">{{submitButtonText}}</a>
+            <a ng-click="addNewJob()" class="btn">{{submitButtonText}}</a>
          </div>
       </div>
    </div>

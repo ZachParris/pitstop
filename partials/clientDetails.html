@@ -5,18 +5,18 @@
    </div>
    <div class="row">
       <div class="col s4 offset-s4">
-          <div class="col s8 offset-s4">{{selectedClient.name}}</div>
-          <div class="col s8 offset-s4">{{selectedClient.email}}</div>
-          <div class="col s8 offset-s4">{{selectedClient.phone}}</div>
-          <div class="col s8 offset-s4">{{selectedClient.address}}</div>
+          <h4>{{selectedClient.name}}</h4>
+          <h4>{{selectedClient.email}}</h4>
+          <h4>{{selectedClient.phone}}</h4>
+          <h4>{{selectedClient.address}}</h4>
        <div class="col s4 offset-s2">
           <a class="btn" ng-href="#/client/edit/{{selectedClient.id}}">Edit</a>
        </div>
       </div>
-      <div class="col s4 offset-s4">
-        <h3>Work Request</h3>
-      </div>
    </div>
+      <div class="col s4 offset-s4">
+        <h3>Previous Repairs</h3>
+      </div>
    <div class= "row">
    <div class="row search-div">
       <div class="col s4 offset-s4 search-input">
@@ -24,23 +24,24 @@
       </div>
    </div>
    <div class="row">
-    <div ng-repeat="client in clients | filter: searchText">
+    <div ng-repeat="job in jobs | filter: searchText">
          <div class="col s4">
-            <a href="#/client/:id">
-               <div class="col s8 offset-s2">{{details.metal}}</div>
-               <div class="col s8 offset-s2">{{details.stones}}</div>
-               <div class="col s8 offset-s2">{{details.size}}</div>
-               <div class="col s8 offset-s2">{{details.value}}</div>
-               <div class="col s8 offset-s2">{{details.description}}</div>
-               <div class="col s8 offset-s2">{{condition.centerStones}}</div>
-               <div class="col s8 offset-s2">{{condition.prongs}}</div>
-               <div class="col s8 offset-s2">{{condition.Shanks}}</div>
-               <div class="col s8 offset-s2">{{condition.other}}</div>
+            <a href="#/intake/{{selectedClient.id}}">
+               <div class="col s8 offset-s2">{{newJob.metal}}</div>
+               <div class="col s8 offset-s2">{{newJob.stones}}</div>
+               <div class="col s8 offset-s2">{{newJob.size}}</div>
+               <div class="col s8 offset-s2">{{newJob.value}}</div>
+               <div class="col s8 offset-s2">{{newJob.description}}</div>
+               <div class="col s8 offset-s2">{{newJob.centerStones}}</div>
+               <div class="col s8 offset-s2">{{newJob.prongs}}</div>
+               <div class="col s8 offset-s2">{{newJob.Shanks}}</div>
+               <div class="col s8 offset-s2">{{newJob.other}}</div>
             </a>
          </div>
        </div>
    </div>
+
    <div class="col s4 offset-s4">
-      <a ng-href="#/intake" class="btn">{{submitButtonText}}</a>
+      <a ng-href="#/intake/{{selectedClient.id}}" class="btn">{{submitButtonText}}</a>
    </div>
 </div>
