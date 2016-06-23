@@ -61,8 +61,8 @@ app.config(function($routeProvider) {
     }
   }).
   when('/intake/:id', {
-    templateUrl: 'partials/serviceDetails.html',
-    controller: "ServiceDetailCtrl",
+    templateUrl: 'partials/intakeView.html',
+    controller: "IntakeCtrl",
     resolve: {
       isAuth
     }

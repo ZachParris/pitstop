@@ -1,4 +1,4 @@
-app.controller("IntakeCtrl", function($scope, $location, $rootScope, DataFactory) {
+app.controller("IntakeCtrl", function($scope, $location, $routeParams, $rootScope, DataFactory) {
 	$scope.title = "Intake";
     $scope.submitButtonText = "Submit";
     $scope.newJob = {
@@ -12,13 +12,14 @@ app.controller("IntakeCtrl", function($scope, $location, $rootScope, DataFactory
         shanks:"",
         other: "",
         price: "",
-        date: ""
+        date: "",
+        id: $routeParams.id
     };
 
     $scope.addNewJob = function(){
         DataFactory.postNewJob($scope.newJob)
             .then((response) => {
-                $location.url("/client/:id");
+                $location.url(`/client/${$routeParams.id}`);
                 console.log("response", response);
                 $scope.$apply();
             });

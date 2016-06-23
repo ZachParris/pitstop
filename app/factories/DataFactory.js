@@ -76,7 +76,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                         other: newJob.other,
                         price: newJob.price,
                         date: newJob.date,
-                        uid: user.id
+                        id: newJob.id
                     })
                 )
                 .success(
@@ -110,14 +110,12 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
             $http.get(`${firebaseURL}clients/${clients}.json`)
                 .success(function(itemObject) {
                     console.log("itemObject", itemObject);
-                    // itemObject.id = ;
                     resolve(itemObject);
                 });
         });
     };
 
     var updateClientInfo = function(id, newItem) {
-        // let user = AuthFactory.getUser();
         return new Promise((resolve, reject) => {
             $http.put(
               `${firebaseURL}clients/${id}.json`,

@@ -2,20 +2,8 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $location, Dat
 	$scope.title = "Welcome Back!";
     $scope.submitButtonText = "Add New Job";
     $scope.clients = [];
-    $scope.selectedClient = {};
-    $scope.newJob = {
-      metal: "",
-        stones: "",
-        size: "",
-        value: "",
-        description: "",
-        centerStones:"",
-        prongs: "",
-        shanks:"",
-        other: "",
-        price: "",
-        date: ""
-    };
+    $scope.selectedClient = [];
+    $scope.newJob = [];
 
 
      DataFactory.getClientList().then(function(itemCollection){
@@ -29,9 +17,9 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $location, Dat
     });
 
     $scope.addNewJob = function(){
-        DataFactory.postNewJob($scope.newJob)
+        DataFactory.getNewJob($scope.newJob)
             .then((response) => {
-                $location.url("/client/:id");
+                $location.path(`/client/list`);
                 console.log("response", response);
                 $scope.$apply();
             });

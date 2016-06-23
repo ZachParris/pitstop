@@ -26,7 +26,7 @@
    <div class="row">
     <div ng-repeat="job in jobs | filter: searchText">
          <div class="col s4">
-            <!-- <a href="#/client/:id"> -->
+            <a href="#/intake/{{selectedClient.id}}">
                <div class="col s8 offset-s2">{{newJob.metal}}</div>
                <div class="col s8 offset-s2">{{newJob.stones}}</div>
                <div class="col s8 offset-s2">{{newJob.size}}</div>
@@ -36,11 +36,12 @@
                <div class="col s8 offset-s2">{{newJob.prongs}}</div>
                <div class="col s8 offset-s2">{{newJob.Shanks}}</div>
                <div class="col s8 offset-s2">{{newJob.other}}</div>
-            <!-- </a> -->
+            </a>
          </div>
        </div>
    </div>
+
    <div class="col s4 offset-s4">
-      <a ng-href="#/intake" class="btn">{{submitButtonText}}</a>
+      <a ng-href="#/intake/{{selectedClient.id}}" class="btn">{{submitButtonText}}</a>
    </div>
 </div>
