@@ -28,7 +28,7 @@ app.controller("ClientListCtrl", function($scope, $location, $routeParams, DataF
         DataFactory.deleteClient(currentClient).then(function(response){
             DataFactory.getClientList().then(function(data) {
                 $scope.clients = data;
-                $scope.$apply()
+                $scope.$apply();
                 }
             );
         });
@@ -47,8 +47,8 @@ app.controller("ClientListCtrl", function($scope, $location, $routeParams, DataF
             $scope.clients = [];
                 $scope.clients = data;
                 if($scope.clients.length === 0){
-                    $rootScope.findListShow = false;
-                    $rootScope.addClientShow = true;
+                    $rootScope.clientListShow = false;
+                    $rootScope.clientAddShow = true;
                 }
             });
         }

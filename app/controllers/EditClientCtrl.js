@@ -1,7 +1,11 @@
-app.controller("EditClientCtrl", function($scope, $location, $window, $routeParams, DataFactory) {
+app.controller("EditClientCtrl", function($scope, $rootScope, $location, $window, $routeParams, DataFactory) {
     $scope.title = "Update Client Info";
     $scope.submitButtonText = "Update";
+    $rootScope.clientListShow = true;
+    $rootScope.clientLogoutShow = true;
+    $rootScope.clientAddShow = true;
     $scope.newClients = {};
+    $scope.selectedClient = [];
 
 
     DataFactory.getClientList().then(function(itemCollection) {

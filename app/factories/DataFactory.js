@@ -13,7 +13,6 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                         clientDataList[key].id = key;
                         clients.push(clientDataList[key]);
                     });
-                    console.log("clients", clients);
                     resolve(clients);
                 });
         });
@@ -23,13 +22,14 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         let workOrder = [];
         var user = AuthFactory.getUser();
         return new Promise((resolve, reject) => {
-            $http.get(`${firebaseURL}jobs.json`)
+            $http.get(`${firebaseURL}workOrder.json`)
                 .success(function(clientObject) {
                     var clientDataList = clientObject;
                     Object.keys(clientDataList).forEach(function(key) {
                         clientDataList[key].id = key;
                         workOrder.push(clientDataList[key]);
                     });
+                    console.log("workOrder", workOrder);
                     resolve(workOrder);
                 });
         });
@@ -61,9 +61,8 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
     };
 
     var postClientJob = function(workOrder) {
-        let user = AuthFactory.getUser();
         return new Promise((resolve, reject) => {
-            $http.post(`${firebaseURL}jobs.json`,
+            $http.post(`${firebaseURL}workOrder.json`,
                     JSON.stringify({
                         metal: workOrder.Metal,
                         stones: workOrder.stones,
@@ -76,7 +75,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                         other: workOrder.other,
                         price: workOrder.price,
                         date: workOrder.date,
-                        id: workOrder.id
+                        id: workOrder.id,
                     })
                 )
                 .success(
@@ -109,7 +108,6 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         return new Promise((resolve, reject) => {
             $http.get(`${firebaseURL}clients/${clients}.json`)
                 .success(function(itemObject) {
-                    console.log("itemObject", itemObject);
                     resolve(itemObject);
                 });
         });
