@@ -3,7 +3,7 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $location, Dat
     $scope.submitButtonText = "Add New Job";
     $scope.clients = [];
     $scope.selectedClient = [];
-    $scope.newJob = [];
+    $scope.workOrder = [];
 
 
      DataFactory.getClientList().then(function(itemCollection){
@@ -16,9 +16,14 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $location, Dat
         console.log("selectedItem", $scope.selectedClient);
     });
 
-    $scope.addNewJob = function(){
-        DataFactory.getNewJob($scope.newJob)
-            .then((response) => {
+    //  DataFactory.getClientJob().then(function(jobCollection){
+    //     console.log("jobCollection from promise", jobCollection);
+    //     $scope.workOrder = jobCollection; 
+    // });
+
+    $scope.addWorkOrder = function(){
+        DataFactory.getClientJob($scope.workOrder)
+            .then((response) => { 
                 $location.path(`/client/list`);
                 console.log("response", response);
                 $scope.$apply();
@@ -36,6 +41,17 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $location, Dat
 
     displaySelectedClient();
 
+
+     var displayClientJobs = function(workOrder){
+      if($location.path() === `/client/${$routeParams.id}`){
+        DataFactory.getClientJob($routeParams.id).then(function(jobData) {
+          console.log("jobData", jobData);
+          $scope.workOrder = jobData;
+        });
+      }
+    };
+
+    displayClientJobs();
 
 });
  

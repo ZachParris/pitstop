@@ -1,5 +1,5 @@
 app.controller("ClientListCtrl", function($scope, $location, $routeParams, DataFactory, AuthFactory){
-    $scope.title = "Clients";
+    $scope.title = "Registered Clients";
     $scope.submitButtonText = "Add New";
     $scope.clients = [];
     $scope.currentClient;

@@ -1,7 +1,7 @@
 app.controller("IntakeCtrl", function($scope, $location, $routeParams, $rootScope, DataFactory) {
 	$scope.title = "Intake";
     $scope.submitButtonText = "Submit";
-    $scope.newJob = {
+    $scope.workOrder = {
     	metal: "",
         stones: "",
         size: "",
@@ -16,12 +16,12 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $rootScop
         id: $routeParams.id
     };
 
-    $scope.addNewJob = function(){
-        DataFactory.postNewJob($scope.newJob)
+    $scope.addWorkOrder = function(){
+        DataFactory.postClientJob($scope.workOrder)
             .then((response) => {
                 $location.url(`/client/${$routeParams.id}`);
                 console.log("response", response);
-                $scope.$apply();
+                $scope.$apply($scope.workOrder);
             });
     };
 

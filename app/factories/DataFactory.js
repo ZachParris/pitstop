@@ -19,8 +19,8 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
-    var getNewJob = function() {
-        let jobs = [];
+    var getClientJob = function() {
+        let workOrder = [];
         var user = AuthFactory.getUser();
         return new Promise((resolve, reject) => {
             $http.get(`${firebaseURL}jobs.json`)
@@ -28,9 +28,9 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                     var clientDataList = clientObject;
                     Object.keys(clientDataList).forEach(function(key) {
                         clientDataList[key].id = key;
-                        clients.push(clientDataList[key]);
+                        workOrder.push(clientDataList[key]);
                     });
-                    resolve(clients);
+                    resolve(workOrder);
                 });
         });
     };
@@ -60,23 +60,23 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
-    var postNewJob = function(newJob) {
+    var postClientJob = function(workOrder) {
         let user = AuthFactory.getUser();
         return new Promise((resolve, reject) => {
             $http.post(`${firebaseURL}jobs.json`,
                     JSON.stringify({
-                        metal: newJob.Metal,
-                        stones: newJob.stones,
-                        size: newJob.size,
-                        value: newJob.value,
-                        description: newJob.description,
-                        centerStone: newJob.centerStone,
-                        prongs: newJob.prongs,
-                        shanks: newJob.shanks,
-                        other: newJob.other,
-                        price: newJob.price,
-                        date: newJob.date,
-                        id: newJob.id
+                        metal: workOrder.Metal,
+                        stones: workOrder.stones,
+                        size: workOrder.size,
+                        value: workOrder.value,
+                        description: workOrder.description,
+                        centerStone: workOrder.centerStone,
+                        prongs: workOrder.prongs,
+                        shanks: workOrder.shanks,
+                        other: workOrder.other,
+                        price: workOrder.price,
+                        date: workOrder.date,
+                        id: workOrder.id
                     })
                 )
                 .success(
@@ -142,7 +142,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         deleteClient: deleteClient,
         getSingleClient: getSingleClient,
         updateClientInfo: updateClientInfo,
-        getNewJob: getNewJob,
-        postNewJob: postNewJob
+        getClientJob: getClientJob,
+        postClientJob: postClientJob
     };
 });

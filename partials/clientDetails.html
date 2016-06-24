@@ -4,11 +4,11 @@
       </div>
    </div>
    <div class="row">
-      <div class="col s4 offset-s4">
+      <div class="col s4 offset-s4 ">
           <h4>{{selectedClient.name}}</h4>
-          <h4>{{selectedClient.email}}</h4>
-          <h4>{{selectedClient.phone}}</h4>
-          <h4>{{selectedClient.address}}</h4>
+          <h6>{{selectedClient.email}}</h6>
+          <h6>{{selectedClient.phone}}</h6>
+          <h6>{{selectedClient.address}}</h6>
        <div class="col s4 offset-s2">
           <a class="btn" ng-href="#/client/edit/{{selectedClient.id}}">Edit</a>
        </div>
@@ -27,15 +27,15 @@
     <div ng-repeat="job in jobs | filter: searchText">
          <div class="col s4">
             <a href="#/intake/{{selectedClient.id}}">
-               <div class="col s8 offset-s2">{{newJob.metal}}</div>
-               <div class="col s8 offset-s2">{{newJob.stones}}</div>
-               <div class="col s8 offset-s2">{{newJob.size}}</div>
-               <div class="col s8 offset-s2">{{newJob.value}}</div>
-               <div class="col s8 offset-s2">{{newJob.description}}</div>
-               <div class="col s8 offset-s2">{{newJob.centerStones}}</div>
-               <div class="col s8 offset-s2">{{newJob.prongs}}</div>
-               <div class="col s8 offset-s2">{{newJob.Shanks}}</div>
-               <div class="col s8 offset-s2">{{newJob.other}}</div>
+               <h6>{{workOrder.metal}}</h6>
+               <h6>{{workOrder.stones}}</h6>
+               <h6>{{workOrder.value}}</h6>
+               <h6>{{workOrder.size}}</h6>
+               <h6>{{workOrder.description}}</h6>
+               <h6>{{workOrder.centerStones}}</h6>
+               <h6>{{workOrder.prongs}}</h6>
+               <h6>{{workOrder.shanks}}</h6>
+               <h6>{{workOrder.other}}</h6>
             </a>
          </div>
        </div>

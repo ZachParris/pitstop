@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row grey lighten-2">
    <div class="col s4 offset-s4">
       <h5>{{clients.name}}</h5>
    </div>
@@ -9,25 +9,25 @@
                <h4>Description</h4>
             </div>
             <div class="row">
-               <div class="input-field col s2 push-s0">
-                  <label class="white-text">Metal:</label>
-                  <input type="text" ng-model="newJob.metal">
+               <div class="input-field col s2 push-s1">
+                  <label class="red-text">Metal:</label>
+                  <input type="text" ng-model="workOrder.metal">
                </div>
                <div class="input-field col s2 push-s1">
-                  <label class="white-text">Stones:</label>
-                  <input type="text" ng-model="newJob.stones">
+                  <label class="red-text">Stones:</label>
+                  <input type="text" ng-model="workOrder.stones">
                </div>
                <div class="input-field col s2 push-s1">
-                  <label class="white-text">Size:</label>
-                  <input type="text" ng-model="newJob.size">
+                  <label class="red-text">Ring Size:</label>
+                  <input type="text" ng-model="workOrder.size">
                </div>
                <div class="input-field col s2 push-s1">
-                  <label class="white-text">Value:</label>
-                  <input type="text" ng-model="newJob.value">
+                  <label class="red-text">Value:</label>
+                  <input type="text" ng-model="workOrder.value">
                </div>
                <div class="input-field col s8 push-s1">
-                  <label class="white-text">Description:</label>
-                  <input type="text" ng-model="newJob.description">
+                  <label class="red-text">Description:</label>
+                  <input type="text" ng-model="workOrder.description">
                </div>
             </div>
          </div>
@@ -36,38 +36,38 @@
          <div class="col s10 offset-s1">
             <div class="row">
                <form class="col s12" action="#">
-               <h4>Current Condition</h4>
+               <h4>Repair/Current Condition</h4>
                   <div class="row">
-               <div class="input-field col s8 push-s1">
-                  <label class="white-text">Center Stones:</label>
-                  <input type="text" ng-model="newJob.centerStones">
+               <div class="input-field col s6 push-s0">
+                  <label class="red-text">Shanks:</label>
+                  <input type="text" ng-model="workOrder.shanks">
                </div>
-               <div class="input-field col s8 push-s1">
-                  <label class="white-text">Prongs:</label>
-                  <input type="text" ng-model="newJob.prongs">
+               <div class="input-field col s6 push-s1">
+                  <label class="red-text">Prongs:</label>
+                  <input type="text" ng-model="workOrder.prongs">
                </div>
-               <div class="input-field col s8 push-s1">
-                  <label class="white-text">Shanks:</label>
-                  <input type="text" ng-model="newJob.shanks">
+               <div class="input-field col s6 push-s0">
+                  <label class="red-text">Center Stones:</label>
+                  <input type="text" ng-model="workOrder.centerStones">
                </div>
-               <div class="input-field col s8 push-s1">
-                  <label class="white-text">Other:</label>
-                  <input type="text" ng-model="newJob.other">
+               <div class="input-field col s6 push-s1">
+                  <label class="red-text">Other:</label>
+                  <input type="text" ng-model="workOrder.other">
                </div>
-               <div class="input-field col s8 push-s1">
-                  <label class="white-text">Price Quote:</label>
-                  <input type="text" ng-model="newJob.price">
+               <div class="input-field col s2 push-s1">
+                  <label class="red-text">Price Quote:</label>
+                  <input type="text" ng-model="workOrder.price">
                </div>
-               <div class="input-field col s8 push-s1">
-                  <label class="white-text">Completion Date:</label>
-                  <input type="text" ng-model="newJob.date">
+               <div class="input-field col s2 push-s1">
+                  <label class="red-text">Completion Date:</label>
+                  <input type="text" ng-model="workOrder.date">
                </div>
             </div>
                </form>
             </div>
             </div>
          <div class="col s2 offset-s5">
-            <a ng-click="addNewJob()" class="btn">{{submitButtonText}}</a>
+            <a ng-click="addWorkOrder()" class="btn">{{submitButtonText}}</a>
          </div>
       </div>
    </div>

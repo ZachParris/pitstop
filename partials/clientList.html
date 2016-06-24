@@ -6,15 +6,18 @@
    <div class="col s4 offset-s4 search-input">
       <input type="text" placeholder="Search Clients" ng-model="searchText">
    </div>
+     <div class="col s4 offset-s4">
+    <a ng-href="#/client/add" class="btn">{{submitButtonText}}</a>
+  </div>
 </div>
-        <div class="row">
+        <div class="row grey lighten-2">
             <div ng-repeat="client in clients | filter: searchText">
               <div class="col s4">
                 <a ng-href="#/client/{{client.id}}">
-                  <div class="col s8 offset-s2">{{client.name}}</div>
-                  <div class="col s8 offset-s2">{{client.email}}</div>
-                  <div class="col s8 offset-s2">{{client.phone}}</div>
-                  <div class="col s8 offset-s2">{{client.address}}</div>
+                  <div class="col s8 offset-s2 red-text">{{client.name}}</div>
+                  <div class="col s8 offset-s2 red-text">{{client.email}}</div>
+                  <div class="col s8 offset-s2 red-text">{{client.phone}}</div>
+                  <div class="col s8 offset-s2 red-text">{{client.address}}</div>
                 </a>
                   <div class="col s4 offset-s2">
                       <button class="btn" ng-click="clientDelete(client)">Delete</button>
@@ -22,9 +25,4 @@
         </div>
       </div>
     </div>
-
-  <div class="col s4 offset-s4">
-    <a ng-href="#/client/add" class="btn">{{submitButtonText}}</a>
-  </div>
-    
  </div>
