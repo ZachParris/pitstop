@@ -4,9 +4,9 @@
       <img class="nav-img" src="img/main-logo.png">
       <a href="#" class="button-collapse nav-hamburger nav-link" data-activates="mobile-demo" data-menuwidth="325" data-closeonclick="true">
       <ul class="right hide-on-med-and-down">
-        <li><a href="/#/client/list">View Clients</a></li>
-        <li><a href="/#/client/add">Add Clients</a></li>
-        <li><a href="/#/logout">Logout</a></li>
+        <li ng-show="clientListShow"><a href="/#/client/list">View Clients</a></li>
+        <li ng-show="clientAddShow"><a href="/#/client/add">Add Clients</a></li>
+        <li ng-show="clientLogoutShow"><a href="/#/logout">Logout</a></li>
       </ul>
   </a>
     </div>

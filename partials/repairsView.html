@@ -1,0 +1,32 @@
+ <div ng-controller="IntakeCtrl">
+ <div class="col s8 offset-s4">
+        <h3>Previous Repairs</h3>
+      </div>
+   <div class= "row">
+   <div class="row search-div">
+      <div class="col s4 offset-s4 search-input">
+         <input type="text" placeholder="Search Jobs" ng-model="searchText">
+      </div>
+   </div>
+<div class="row">
+    <div ng-href="#/client/intake/{{selectedClient.id}}" ng-repeat="item in workOrder | filter: searchText">
+         <div class="col s4">
+            <!-- <a href="#/intake/{{selectedClient.id}}"> -->
+             
+              <div class="col s8 offset-s2 red-text">{{workOrder.metal}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.stones}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.value}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.size}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.description}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.centerStones}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.prongs}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.shanks}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.other}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.price}}</div>
+              <div class="col s8 offset-s2 red-text">{{workOrder.date}}</div>
+
+            <!-- </a> -->
+         </div>
+       </div>
+   </div>
+ </div>

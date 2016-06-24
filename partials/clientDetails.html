@@ -9,38 +9,12 @@
           <h6>{{selectedClient.email}}</h6>
           <h6>{{selectedClient.phone}}</h6>
           <h6>{{selectedClient.address}}</h6>
-       <div class="col s4 offset-s2">
+       <div class="col s4 offset-s4">
           <a class="btn" ng-href="#/client/edit/{{selectedClient.id}}">Edit</a>
        </div>
       </div>
    </div>
-      <div class="col s4 offset-s4">
-        <h3>Previous Repairs</h3>
-      </div>
-   <div class= "row">
-   <div class="row search-div">
-      <div class="col s4 offset-s4 search-input">
-         <input type="text" placeholder="Search Jobs" ng-model="searchText">
-      </div>
-   </div>
-   <div class="row">
-    <div ng-repeat="job in jobs | filter: searchText">
-         <div class="col s4">
-            <a href="#/intake/{{selectedClient.id}}">
-               <h6>{{workOrder.metal}}</h6>
-               <h6>{{workOrder.stones}}</h6>
-               <h6>{{workOrder.value}}</h6>
-               <h6>{{workOrder.size}}</h6>
-               <h6>{{workOrder.description}}</h6>
-               <h6>{{workOrder.centerStones}}</h6>
-               <h6>{{workOrder.prongs}}</h6>
-               <h6>{{workOrder.shanks}}</h6>
-               <h6>{{workOrder.other}}</h6>
-            </a>
-         </div>
-       </div>
-   </div>
-
+      <div ng-include="'./partials/repairsView.html'"></div>
    <div class="col s4 offset-s4">
       <a ng-href="#/intake/{{selectedClient.id}}" class="btn">{{submitButtonText}}</a>
    </div>
