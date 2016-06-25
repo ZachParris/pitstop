@@ -8,11 +8,10 @@
 </head>
 <body ng-app="PitstopApp">
    <div ng-include="'./partials/navbar.html'"></div>
-   <div class="row">
-            <div class="row">
-                <div ng-view></div>
-        </div>
-    </div>
+
+   <main class="row">
+    <div ng-view></div>
+  </main>
 	
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
@@ -37,6 +36,6 @@
   <script type="text/javascript" src="app/controllers/ClientDetailCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/EditClientCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/IntakeCtrl.js"></script>
-  <script type="text/javascript" src="app/controllers/ServiceDetailCtrl.js"></script>
+  <!-- // <script type="text/javascript" src="app/controllers/ServiceDetailCtrl.js"></script> -->
 </body>
 </html>

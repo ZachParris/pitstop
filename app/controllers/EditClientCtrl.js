@@ -1,7 +1,14 @@
-app.controller("EditClientCtrl", function($scope, $location, $window, $routeParams, DataFactory) {
+"use strict";
+
+app.controller("EditClientCtrl", function($scope, $rootScope, $location, $window, $routeParams, DataFactory) {
     $scope.title = "Update Client Info";
     $scope.submitButtonText = "Update";
+    $rootScope.clientListShow = true;
+    $rootScope.clientLogoutShow = true;
+    $rootScope.clientAddShow = true;
     $scope.newClients = {};
+    $scope.selectedClient = [];
+    $scope.clients = [];
 
 
     DataFactory.getClientList().then(function(itemCollection) {
@@ -15,7 +22,7 @@ app.controller("EditClientCtrl", function($scope, $location, $window, $routePara
     });
 
     
-    var displaySelectedClient = function(selectedClient) {
+    var displaySelectedClient = function() {
       if($location.path() === `/client/edit/${$routeParams.id}`){
         DataFactory.getSingleClient($routeParams.id).then(function(data) {
           console.log("data", data);

@@ -1,8 +1,13 @@
-app.controller("ClientListCtrl", function($scope, $location, $routeParams, DataFactory, AuthFactory){
-    $scope.title = "Clients";
+"use strict";
+
+app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeParams, DataFactory){
+    $scope.title = "Registered Clients";
     $scope.submitButtonText = "Add New";
+    $rootScope.clientListShow = false;
+    $rootScope.clientLogoutShow = true;
+    $rootScope.clientAddShow = true;
     $scope.clients = [];
-    $scope.currentClient;
+
 
     DataFactory.getClientList().then(function(itemCollection){
         console.log("itemCollection from promise", itemCollection);
@@ -25,10 +30,10 @@ app.controller("ClientListCtrl", function($scope, $location, $routeParams, DataF
   
     $scope.clientDelete = function(currentClient){
         console.log("currentClient", currentClient);
-        DataFactory.deleteClient(currentClient).then(function(response){
+        DataFactory.deleteClient(currentClient).then(function(){
             DataFactory.getClientList().then(function(data) {
                 $scope.clients = data;
-                $scope.$apply()
+                $scope.$apply();
                 }
             );
         });
@@ -46,10 +51,9 @@ app.controller("ClientListCtrl", function($scope, $location, $routeParams, DataF
             DataFactory.getClientList().then(function(data) {
             $scope.clients = [];
                 $scope.clients = data;
-                if($scope.clients.length === 0){
-                    $rootScope.findListShow = false;
-                    $rootScope.addClientShow = true;
-                }
+                // if($scope.clients.forEach()){
+
+                // }
             });
         }
         };

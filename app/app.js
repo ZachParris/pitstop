@@ -80,12 +80,12 @@ app.config(function($routeProvider) {
 
 app.run(($location) => {
 
-  let watchlistRef = new Firebase("https://pitstop-app-zp.firebaseio.com/");
-  watchlistRef.unauth();
+  let clientListRef = new Firebase("https://pitstop-app-zp.firebaseio.com/");
+  clientListRef.unauth();
 
-  watchlistRef.onAuth(authData => {
+  clientListRef.onAuth(authData => {
     if (!authData) {
       $location.path("/login");
     }
-  })
+  });
   });

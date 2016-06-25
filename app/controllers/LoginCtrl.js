@@ -10,6 +10,9 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
 
   if($location.path() === "/logout") {
     ref.unauth();
+    $rootScope.addClientShow = false;
+    $rootScope.findClientShow = false;
+    $rootScope.clientLogoutShow = false;
   }
 
   $scope.register = () => {
@@ -33,18 +36,19 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
       .authenticate($scope.account)
       .then(() => {
         DataFactory.getClientList().then(function(data) {
-          let clients = [];     
           $scope.clients = data;
+          $rootScope.clientListShow = true;
+          $rootScope.clientLogoutShow = true;
           if($scope.clients.length === 0){
             console.log("#");
-            $rootScope.addClientShow = true;
-            $rootScope.findClientShow = false;
+            $rootScope.clientAddShow = true;
+            $rootScope.clientListShow = false;
             $location.url("/client/add");
           }else{
-            $rootScope.addClientShow = true;
-            $rootScope.findClientShow = false;
+            $rootScope.clientAddShow = true;
+            $rootScope.clientListShow = false;
             $location.url("/client/list");
-          };
+          }
         $scope.$apply();
         });
       });
