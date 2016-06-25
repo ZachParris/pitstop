@@ -4,7 +4,6 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
 
     var getClientList = function() {
         let clients = [];
-        var user = AuthFactory.getUser();
         return new Promise((resolve, reject) => {
             $http.get(`${firebaseURL}clients.json`)
                 .success(function(clientObject) {
@@ -18,19 +17,18 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
-    var getClientJob = function() {
-        let workOrder = [];
-        var user = AuthFactory.getUser();
+    var getWorkOrders = function() {
+        let workOrders = [];
         return new Promise((resolve, reject) => {
             $http.get(`${firebaseURL}workOrder.json`)
                 .success(function(clientObject) {
                     var clientDataList = clientObject;
                     Object.keys(clientDataList).forEach(function(key) {
                         clientDataList[key].id = key;
-                        workOrder.push(clientDataList[key]);
+                        workOrders.push(clientDataList[key]);
                     });
-                    console.log("workOrder", workOrder);
-                    resolve(workOrder);
+                    console.log("getWorkOrders", workOrders);
+                    resolve(workOrders);
                 });
         });
     };
@@ -56,11 +54,11 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 )
                 .error(function() {
                     console.log("failed");
-                })
+                });
         });
     };
 
-    var postClientJob = function(workOrder) {
+    var postClientJob = function(workOrder, clientId) {
         return new Promise((resolve, reject) => {
             $http.post(`${firebaseURL}workOrder.json`,
                     JSON.stringify({
@@ -75,7 +73,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                         other: workOrder.other,
                         price: workOrder.price,
                         date: workOrder.date,
-                        id: workOrder.id,
+                        clientId: clientId
                     })
                 )
                 .success(
@@ -86,7 +84,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 )
                 .error(function() {
                     console.log("failed");
-                })
+                });
         });
     };
 
@@ -107,9 +105,15 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         console.log("clients", clients);
         return new Promise((resolve, reject) => {
             $http.get(`${firebaseURL}clients/${clients}.json`)
-                .success(function(itemObject) {
-                    resolve(itemObject);
-                });
+                .success(function(singleClientObject) {
+                 var singleClientData = singleClientObject;
+                 console.log(singleClientData);
+                 // Object.keys(singleClientData).forEach(function(key) {
+                 //        singleClientData[key].id = key;
+                 //        clients.push(singleClientData[key]);
+                 //    });
+                    resolve(clients);
+                  });
         });
     };
 
@@ -140,7 +144,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         deleteClient: deleteClient,
         getSingleClient: getSingleClient,
         updateClientInfo: updateClientInfo,
-        getClientJob: getClientJob,
+        getWorkOrders: getWorkOrders,
         postClientJob: postClientJob
     };
 });

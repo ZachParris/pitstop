@@ -7,7 +7,8 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
     $rootScope.clientLogoutShow = true;
     $rootScope.clientAddShow = false;
     $scope.clients = [];
-    $scope.selectedClient = [];
+    $scope.selectedClient = {};
+    $scope.$watch($scope.selectedClient);
     $scope.workOrder = [];
     $scope.clientWorkOrder = [];
 
@@ -17,57 +18,45 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
         $scope.clients = itemCollection;
 
         $scope.selectedClient = $scope.clients.filter(function(client) {
-            return client.id === $routeParams.id;
+            return client.id == $routeParams.id;
         })[0];
-        console.log("selectedItem", $scope.selectedClient);
+        console.log("selectedClient", $scope.selectedClient);
     });
 
+    console.log("DataFactory.getWorkOrders", DataFactory.getWorkOrders());
 
-
-    var displaySelectedClient = function(selectedClient) {
+    $scope.addWorkOrder = function() {
         if ($location.path() === `/client/${$routeParams.id}`) {
-            DataFactory.getSingleClient($routeParams.id).then(function(data) {
-                console.log("data", data);
-                $scope.selectedClient = data;
-            });
-
-        }
-    };
-
-    displaySelectedClient();
-
-    $scope.addWorkOrder = function(data) {
-        if ($location.path() === `/client/${$routeParams.id}`) {
-            DataFactory.getClientJob($scope.routeParam.id).then(function(data) {
+            DataFactory.getWorkOrders($scope.routeParam.id).then(function(data) {
               console.log("dataCollection", data); 
-              $scope.workOrder = dataCollection;
+              $scope.workOrder = data;
             });
         }
         $scope.$apply();
     };
 
-    $scope.displayWorkOrders = function(data) {
-    DataFactory.getClientJob().then(function(data){
+    $scope.displayWorkOrders = function() {
+    DataFactory.getWorkOrders().then(function(data){
       $scope.workOrder = data;
       console.log(data);
     });
   };
 
-  // $scope.displayClientWorkOrder = function(clientOrderId) {
-  //   DataFactory.getClientJob().then(function(response) {
-  //     response.forEach(function(job) {
-  //       if (clientOrderId === job.id) {
-  //         $rootScope.clientWorkOrder = job;
-  //       } else {
-  //         console.log("not working");
-  //       }
-  //       $location.path(`/client/${$rootScope.clientWorkOrder.id}`);
-  //     })
-  //     console.log(response);
-  //   })
-  // };
+  $scope.displayClientWorkOrder = function(clientOrderId) {
+    DataFactory.getWorkOrders().then(function(response) {
+      response.forEach(function(job) {
+        if (clientOrderId === job.id) {
+          $rootScope.clientWorkOrder = job;
+        } else {
+          console.log("not working");
+        }
+        $location.path(`/client/${$rootScope.clientWorkOrder.id}`);
+      })
+      console.log(response);
+    })
+  };
 
-  // displayWorkOrders();
+  $scope.displayWorkOrders();
 
 
 

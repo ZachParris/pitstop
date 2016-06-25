@@ -2,28 +2,41 @@
  <div class="col s8 offset-s4">
         <h3>Previous Repairs</h3>
       </div>
+
    <div class= "row">
    <div class="row search-div">
       <div class="col s4 offset-s4 search-input">
          <input type="text" placeholder="Search Jobs" ng-model="searchText">
+      <a ng-href="#/intake/{{selectedClient.id}}" class="btn">Add New Job</a>
       </div>
    </div>
-<div class="row">
-    <div ng-href="#/client/intake/{{selectedClient.id}}" ng-repeat="item in workOrder | filter: searchText">
-         <div class="col s4">
+   <!-- <div class="col s4 offset-s4">
+   </div> -->
+<div class="row grey lighten-2 z-depth-3">
+    <div ng-href="#/client/intake/{{selectedClient.id}}" ng-repeat="item in workOrders | filter: searchText">
+
+         <div class="repairCard col s4 z-depth-2">
             <!-- <a href="#/intake/{{selectedClient.id}}"> -->
-             
-              <div class="col s8 offset-s2 red-text">{{workOrder.metal}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.stones}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.value}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.size}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.description}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.centerStones}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.prongs}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.shanks}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.other}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.price}}</div>
-              <div class="col s8 offset-s2 red-text">{{workOrder.date}}</div>
+            <div class="ringIntake">
+              <h4>Ring Description</h4>
+              <h5>Description: {{item.description}}</h5>
+              <h5>Metal: {{item.metals}}</h5>
+              <h5>Stones: {{item.stones}}</h5>
+              <h5>Value: {{item.value}}</h5>
+              <h5>Size: {{item.size}}</h5>
+              </div>
+              <div class="ringIntake">
+              <h4>Required Repair</h4>
+              <h5>Center Stones: {{item.centerStones}}</h5>
+              <h5>Prongs: {{item.prongs}}</h5>
+              <h5>Shanks: {{item.shanks}}</h5>
+              <h5>Other: {{item.other}}</h5>
+              </div>
+              <div class="ringIntake">
+              <h4>Your Quote</h4>
+              <h5>Price: {{item.price}}</h5>
+              <h5>Date: {{item.date}}</h5>
+              </div>
 
             <!-- </a> -->
          </div>

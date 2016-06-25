@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller("IntakeCtrl", function($scope, $location, $routeParams, $rootScope, DataFactory) {
 	$scope.title = "Intake";
     $scope.submitButtonText = "Submit";
@@ -16,9 +18,10 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $rootScop
         date: "",
         id: $routeParams.id
     };
+    $scope.workOrders = [];
  
     $scope.addWorkOrder = function(){
-        DataFactory.postClientJob($scope.newClientWorkOrder)
+        DataFactory.postClientJob($scope.workOrder)
             .then((response) => {
                 $location.url(`#/client/${$routeParams.id}`);
                 console.log("response", response);
@@ -26,24 +29,23 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $rootScop
             });
     };
 
-  	$scope.displayWorkOrders = function(data) {
-	    DataFactory.getClientJob().then(function(data){
-	      $scope.workOrder = data;
+  	$scope.displayWorkOrders = function() {
+	    DataFactory.getWorkOrders().then(function(data){
+	      $scope.workOrders = data;
 	      console.log(data);
-	    })
+	      $scope.$apply();
+	    });
 	  };
 
   	$scope.displayClientWorkOrder = function(clientId) {
-	    DataFactory.getClientJob().then(function(response) {
-	      response.forEach(function(newClientWorkOrder) {
-	        if (clientId === $scope.newClientWorkOrder.id) {
+	    DataFactory.getWorkOrders().then(function(response) {
+	      response.forEach(function() {
+	        if (clientId === $scope.workOrder.id) {
 	        	console.log("clientId", response);
 	          $scope.workOrder = $scope.newClientWorkOrder;
 	        } 
-	        $location.path(`/client/${$rootScope.workOrder.id}`);
-	      })
-	      console.log(response);
-	    })
+	      });
+	    });
 	  };
 
   	$scope.displayWorkOrders();

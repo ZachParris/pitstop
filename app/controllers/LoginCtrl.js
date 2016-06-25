@@ -36,7 +36,6 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
       .authenticate($scope.account)
       .then(() => {
         DataFactory.getClientList().then(function(data) {
-          let clients = [];     
           $scope.clients = data;
           $rootScope.clientListShow = true;
           $rootScope.clientLogoutShow = true;
@@ -49,7 +48,7 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
             $rootScope.clientAddShow = true;
             $rootScope.clientListShow = false;
             $location.url("/client/list");
-          };
+          }
         $scope.$apply();
         });
       });

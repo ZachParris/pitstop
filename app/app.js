@@ -87,5 +87,5 @@ app.run(($location) => {
     if (!authData) {
       $location.path("/login");
     }
-  })
+  });
   });
