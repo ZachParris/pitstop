@@ -11,6 +11,7 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
     $scope.$watch($scope.selectedClient);
     $scope.workOrder = [];
     $scope.clientWorkOrder = [];
+    $rootScope.currentClientJobs = [];
 
 
     DataFactory.getClientList().then(function(itemCollection) {
@@ -18,16 +19,14 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
         $scope.clients = itemCollection;
 
         $scope.selectedClient = $scope.clients.filter(function(client) {
-            return client.id == $routeParams.id;
+            return client.id === $routeParams.id;
         })[0];
-        console.log("selectedClient", $scope.selectedClient);
     });
 
-    console.log("DataFactory.getWorkOrders", DataFactory.getWorkOrders());
 
     $scope.addWorkOrder = function() {
         if ($location.path() === `/client/${$routeParams.id}`) {
-            DataFactory.getWorkOrders($scope.routeParam.id).then(function(data) {
+            DataFactory.getWorkOrders($scope.routeParams.id).then(function(data) {
               console.log("dataCollection", data); 
               $scope.workOrder = data;
             });
@@ -35,28 +34,22 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
         $scope.$apply();
     };
 
-    $scope.displayWorkOrders = function() {
-    DataFactory.getWorkOrders().then(function(data){
-      $scope.workOrder = data;
-      console.log(data);
+
+  $scope.displayClientWorkOrders = function(clientId) {
+    DataFactory.getWorkOrders().then(function(response) {
+      response.forEach(function(job) {
+        console.log(response);
+        if (job.clientId === $routeParams.id) {
+          console.log("yes");
+          $rootScope.currentClientJobs.push(job);
+          $scope.$apply();
+        } 
+      });
+      console.log(response);
     });
   };
 
-  $scope.displayClientWorkOrder = function(clientOrderId) {
-    DataFactory.getWorkOrders().then(function(response) {
-      response.forEach(function(job) {
-        if (clientOrderId === job.id) {
-          $rootScope.clientWorkOrder = job;
-        } else {
-          console.log("not working");
-        }
-        $location.path(`/client/${$rootScope.clientWorkOrder.id}`);
-      })
-      console.log(response);
-    })
-  };
-
-  $scope.displayWorkOrders();
+  $scope.displayClientWorkOrders($routeParams.id);
 
 
 

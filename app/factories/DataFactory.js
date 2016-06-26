@@ -33,6 +33,22 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
+    var getSingleClient = function(clients) {
+        console.log("clients", clients);
+        return new Promise((resolve, reject) => {
+            $http.get(`${firebaseURL}clients.json`)
+                .success(function(singleClientObject) {
+                 var singleClientData = singleClientObject;
+                 console.log(singleClientData);
+                 // Object.keys(singleClientData).forEach(function(key) {
+                 //        singleClientData[key].id = key;
+                 //        clients.push(singleClientData[key]);
+                 //    });
+                    resolve(clients);
+                  });
+        });
+    };
+
 
     var postNewClient = function(newClients) {
         let user = AuthFactory.getUser();
@@ -59,10 +75,11 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
     };
 
     var postClientJob = function(workOrder, clientId) {
+      console.log("clientId", clientId);
         return new Promise((resolve, reject) => {
             $http.post(`${firebaseURL}workOrder.json`,
                     JSON.stringify({
-                        metal: workOrder.Metal,
+                        metals: workOrder.metals,
                         stones: workOrder.stones,
                         size: workOrder.size,
                         value: workOrder.value,
@@ -78,7 +95,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 )
                 .success(
                     function(objectFromFirebase) {
-                        console.log("success");
+                        // console.log("success");
                         resolve(objectFromFirebase);
                     }
                 )
@@ -87,6 +104,15 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 });
         });
     };
+
+    // var getClientWorkOrder = function() {
+    //   return new Promise((resolve, reject) => {
+    //         $http.get(`${firebaseURL}clients.json?orderBy="uid"&equalTo="${.uid}"`)
+
+    //                 resolve(clients);
+    //               });
+    //     });
+    // };
 
 
     var deleteClient = function(clients) {
@@ -98,22 +124,6 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                   console.log("objectFromFirebase", objectFromFirebase);
                     resolve();
                 });
-        });
-    };
-
-    var getSingleClient = function(clients) {
-        console.log("clients", clients);
-        return new Promise((resolve, reject) => {
-            $http.get(`${firebaseURL}clients/${clients}.json`)
-                .success(function(singleClientObject) {
-                 var singleClientData = singleClientObject;
-                 console.log(singleClientData);
-                 // Object.keys(singleClientData).forEach(function(key) {
-                 //        singleClientData[key].id = key;
-                 //        clients.push(singleClientData[key]);
-                 //    });
-                    resolve(clients);
-                  });
         });
     };
 
