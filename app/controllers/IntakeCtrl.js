@@ -29,6 +29,4 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
                 $scope.$apply();
             });
     };
-
-
 });

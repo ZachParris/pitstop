@@ -29,7 +29,7 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
 
   
     $scope.clientDelete = function(currentClient){
-        console.log("currentClient", currentClient);
+        // console.log("currentClient", currentClient);
         DataFactory.deleteClient(currentClient).then(function(){
             DataFactory.getClientList().then(function(data) {
                 $scope.clients = data;
@@ -51,16 +51,9 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
             DataFactory.getClientList().then(function(data) {
             $scope.clients = [];
                 $scope.clients = data;
-                // if($scope.clients.forEach()){
-
-                // }
             });
         }
         };
             $scope.displayClients();
-
-
-
-
     
     });

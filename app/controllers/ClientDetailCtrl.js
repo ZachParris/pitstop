@@ -10,7 +10,6 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
     $scope.selectedClient = {};
     $scope.$watch($scope.selectedClient);
     $scope.workOrder = [];
-    $scope.clientWorkOrder = [];
     $rootScope.currentClientJobs = [];
 
 
@@ -36,8 +35,9 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
 
 
   $scope.displayClientWorkOrders = function(clientId) {
-    DataFactory.getWorkOrders().then(function(response) {
-      response.forEach(function(job) {
+      DataFactory.getWorkOrders().then(function(response) {
+      $rootScope.currentClientJobs = [];
+        response.forEach(function(job) {
         console.log(response);
         if (job.clientId === $routeParams.id) {
           console.log("yes");
