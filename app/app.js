@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module('PitstopApp', ["ngRoute"])
+var app = angular.module('PitstopApp', ["ngRoute", 'ui.materialize'])
   .constant("firebaseURL", "https://pitstop-app-zp.firebaseio.com/");
 
   let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
