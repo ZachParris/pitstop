@@ -31,41 +31,64 @@
                </div>
             </div>
          </div>
-
-
          <div class="col s10 offset-s1">
             <div class="row">
                <form class="col s12" action="#">
-               <h4>Repair/Current Condition</h4>
+                  <h4>Repair/Current Condition</h4>
                   <div class="row">
-               <div class="input-field col s6 push-s0">
-                  <label class="red-text">Shanks:</label>
-                  <input type="text" ng-model="workOrder.shanks">
-               </div>
-               <div class="input-field col s6 push-s1">
-                  <label class="red-text">Prongs:</label>
-                  <input type="text" ng-model="workOrder.prongs">
-               </div>
-               <div class="input-field col s6 push-s0">
-                  <label class="red-text">Center Stones:</label>
-                  <input type="text" ng-model="workOrder.centerStones">
-               </div>
-               <div class="input-field col s6 push-s1">
-                  <label class="red-text">Other:</label>
-                  <input type="text" ng-model="workOrder.other">
-               </div>
-               <div class="input-field col s2 push-s1">
-                  <label class="red-text">Price Quote:</label>
-                  <input type="text" ng-model="workOrder.price">
-               </div>
-               <div class="input-field col s2 push-s1">
-                  <label class="red-text">Completion Date:</label>
-                  <input type="text" ng-model="workOrder.date">
-               </div>
-            </div>
+                     <div class="input-field col s6 push-s0">
+                        <label class="red-text">Shanks:</label>
+                        <input type="text" ng-model="workOrder.shanks">
+                     </div>
+                     <div class="input-field col s6 push-s1">
+                        <label class="red-text">Prongs:</label>
+                        <input type="text" ng-model="workOrder.prongs">
+                     </div>
+                     <div class="input-field col s6 push-s0">
+                        <label class="red-text">Center Stones:</label>
+                        <input type="text" ng-model="workOrder.centerStones">
+                     </div>
+                     <div class="input-field col s6 push-s1">
+                        <label class="red-text">Other:</label>
+                        <input type="text" ng-model="workOrder.other">
+                     </div>
+                     <div class="input-field col s2 push-s1">
+                        <label class="red-text">Price Quote:</label>
+                        <input type="text" ng-model="workOrder.price">
+                     </div>
+                  </div>
+                     <div class="red-text">
+                     <h6>Completion Date:</h6>
+                     <!-- <label for="inputCreated">Input date</label> -->
+                     <input input-date
+                        type="text"
+                        name="created"
+                        id="inputCreated"
+                        ng-model="currentTime"
+                        container=""
+                        format="mm/dd/yyyy"
+                        months-full="{{ month }}"
+                        months-short="{{ monthShort }}"
+                        weekdays-full="{{ weekdaysFull }}"
+                        weekdays-short="{{ weekdaysShort }}"
+                        weekdays-letter="{{ weekdaysLetter }}"
+                        disable="disable"
+                        min="{{ minDate }}"
+                        max="{{ maxDate }}"
+                        today="today"
+                        clear="clear"
+                        close="close"
+                        select-years="15"
+                        on-start="onStart()"
+                        on-render="onRender()"
+                        on-open="onOpen()"
+                        on-close="onClose()"
+                        on-set="onSet()"
+                        on-stop="onStop()" />
+                     </div>
                </form>
             </div>
-            </div>
+         </div>
          <div class="col s2 offset-s5">
             <a ng-click="addWorkOrder()" class="btn">{{submitButtonText}}</a>
          </div>
