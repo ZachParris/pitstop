@@ -40,10 +40,6 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 .success(function(singleClientObject) {
                  var singleClientData = singleClientObject;
                  console.log(singleClientData);
-                 // Object.keys(singleClientData).forEach(function(key) {
-                 //        singleClientData[key].id = key;
-                 //        clients.push(singleClientData[key]);
-                 //    });
                     resolve(clients);
                   });
         });
@@ -74,7 +70,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
-    var postClientJob = function(workOrder, clientId) {
+    var postClientJob = function(workOrder, clientId, promiseDate) {
       console.log("clientId", clientId);
         return new Promise((resolve, reject) => {
             $http.post(`${firebaseURL}workOrder.json`,
@@ -95,7 +91,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 )
                 .success(
                     function(objectFromFirebase) {
-                        // console.log("success");
+                        console.log("success");
                         resolve(objectFromFirebase);
                     }
                 )
@@ -104,16 +100,6 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                 });
         });
     };
-
-    // var getClientWorkOrder = function() {
-    //   return new Promise((resolve, reject) => {
-    //         $http.get(`${firebaseURL}clients.json?orderBy="uid"&equalTo="${.uid}"`)
-
-    //                 resolve(clients);
-    //               });
-    //     });
-    // };
-
 
     var deleteClient = function(clients) {
       console.log("clients", clients);

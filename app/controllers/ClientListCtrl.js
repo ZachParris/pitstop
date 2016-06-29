@@ -17,7 +17,6 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
     $scope.clientSelect = function(){
     DataFactory.getSingleClient($routeParams.id)
         .then(function successCallback(response){
-            console.log("response", response);
             $scope.clients=response;
             $scope.currentClient = $scope.clients.filter(function(client){
             return client.id === $routeParams.id;
@@ -29,7 +28,6 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
 
   
     $scope.clientDelete = function(currentClient){
-        // console.log("currentClient", currentClient);
         DataFactory.deleteClient(currentClient).then(function(){
             DataFactory.getClientList().then(function(data) {
                 $scope.clients = data;
@@ -42,7 +40,6 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
     $scope.inputChange = function(item){
         DataFactory.updateClientInfo(item)
             .then(function(response){
-                console.log(response);
             });
     };
 
