@@ -52,20 +52,21 @@
                         <label class="red-text">Other:</label>
                         <input type="text" ng-model="workOrder.other">
                      </div>
-                     <div class="input-field col s2 push-s1">
+                     <div class="input-field col s2">
                         <label class="red-text">Price Quote:</label>
                         <input type="text" ng-model="workOrder.price">
                      </div>
                   </div>
-                     <div class="red-text">
+                     <div class="red-text jobDate">
                      <h6>Completion Date:</h6>
-                     <!-- <label for="inputCreated">Input date</label> -->
+                     <label for="inputCreated"></label>
                      <input input-date
                         type="text"
+                        id = "inputCreated"
                         name="created"
-                        id="inputCreated"
-                        ng-model="currentTime"
-                        container=""
+                        class="col s3"
+                        ng-model="promiseDate"
+                        container="body"
                         format="mm/dd/yyyy"
                         months-full="{{ month }}"
                         months-short="{{ monthShort }}"
@@ -84,7 +85,8 @@
                         on-open="onOpen()"
                         on-close="onClose()"
                         on-set="onSet()"
-                        on-stop="onStop()" />
+                        on-stop="onStop()" 
+                        placeholder="Completion Date" />
                      </div>
                </form>
             </div>

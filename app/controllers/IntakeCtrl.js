@@ -2,7 +2,7 @@
 
 app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, $rootScope, DataFactory) {
 	$scope.title = "Intake";
-    $scope.currentTime = [];
+    $scope.promiseDate;
     $scope.submitButtonText = "Submit";
     $scope.newClientWorkOrder = [];
     $scope.workOrder = {
@@ -16,12 +16,13 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
         shanks:"",
         other: "",
         price: "",
-        date: $scope.currentTime
+        date: ""
     };
     $scope.workOrders = [];
-
+    
  
     $scope.addWorkOrder = function(){
+        $scope.workOrder.date = $scope.promiseDate;
         DataFactory.postClientJob($scope.workOrder, $routeParams.id)
             .then((response) => {
                 console.log("response", response);
@@ -29,10 +30,13 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
                 $location.url(`/client/${$routeParams.id}`);
                 $scope.$apply();
             });
+        console.log($scope.newPromiseDate );
+        console.log($scope.promiseDate);
     };
 
-    var currentTime = new Date();
-        $scope.currentTime = currentTime;
+    var promiseDate = new Date();
+
+        $scope.promiseDate = promiseDate;
         $scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         $scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -42,8 +46,8 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
         $scope.clear = 'Clear';
         $scope.close = 'Close';
         var days = 15;
-        $scope.minDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
-        $scope.maxDate = (new Date($scope.currentTime.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
+        // $scope.minDate = (new Date($scope.promiseDate.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
+        // $scope.maxDate = (new Date($scope.promiseDate.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
         $scope.onStart = function () {
             console.log('onStart');
         };
@@ -62,4 +66,6 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
         $scope.onStop = function () {
             console.log('onStop');
         };
+
+
 });
