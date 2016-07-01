@@ -6,7 +6,7 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
     $scope.submitButtonText = "Submit";
     $scope.newClientWorkOrder = [];
     $scope.workOrder = {
-    	metals: "",
+    		metals: "",
         stones: "",
         size: "",
         value: "",
@@ -19,8 +19,8 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
         date: ""
     };
     $scope.workOrders = [];
-    
- 
+
+
     $scope.addWorkOrder = function(){
         $scope.workOrder.date = $scope.promiseDate;
         DataFactory.postClientJob($scope.workOrder, $routeParams.id)
@@ -45,9 +45,6 @@ app.controller("IntakeCtrl", function($scope, $location, $routeParams, $window, 
         $scope.today = 'Today';
         $scope.clear = 'Clear';
         $scope.close = 'Close';
-        var days = 15;
-        // $scope.minDate = (new Date($scope.promiseDate.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
-        // $scope.maxDate = (new Date($scope.promiseDate.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
         $scope.onStart = function () {
             console.log('onStart');
         };

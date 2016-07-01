@@ -1,6 +1,6 @@
  <div ng-controller="IntakeCtrl">
  <div class="col s8 offset-s4">
-        <h3>Your Previous Repairs</h3>
+        <h3>Your Repairs</h3>
       </div>
 
    <div class= "row">
@@ -14,7 +14,7 @@
     <div ng-href="#/client/intake/{{selectedClient.id}}" ng-repeat="item in currentClientJobs | filter: searchText">
 
          <div class="repairCard col s4 z-depth-2">
-            <a href="#/intake/{{selectedClient.id}}">
+            <a href="#/intake/{{currentClientJobs.clientId}/edit">
             <div class="ringIntake">
               <h4>Ring Description</h4>
               <h5>Description: {{item.description}}</h5>
@@ -35,8 +35,10 @@
               <h5>Price: {{item.price}}</h5>
               <h5>Date: {{item.date}}</h5>
               </div>
-
             </a>
+            <div class="col s4 offset-s2">
+              <button class="btn z-depth-2" ng-click="workOrderDelete(item.id)">Delete</button>
+            </div>
          </div>
        </div>
    </div>

@@ -45,6 +45,25 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
+    var getSingleJob = function(clientId) {
+      let selectedJob = [];
+      var user = AuthFactory.getUser();
+        console.log("clientId", clientId);
+        return new Promise((resolve, reject) => {
+            $http.get(`${firebaseURL}workOrder.json`)
+                .success(function(orderObject) {
+                 var jobCollection = orderObject;
+                 Object.keys(jobCollection).forEach(function(key){
+                   if(jobCollection[key].clientId === user.id) {
+                     jobCollection[key].id = key;
+                     selectedJob.push(jobCollection[key]);
+                   };
+                 });
+                 console.log(jobCollection);
+                    resolve(clientId);
+                  });
+        });
+    };
 
     var postNewClient = function(newClients) {
         let user = AuthFactory.getUser();
@@ -70,7 +89,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
-    var postClientJob = function(workOrder, clientId, promiseDate) {
+    var postClientJob = function(workOrder, clientId) {
       console.log("clientId", clientId);
         return new Promise((resolve, reject) => {
             $http.post(`${firebaseURL}workOrder.json`,
@@ -113,6 +132,18 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
+      var deleteJob = function(workOrder) {
+      console.log("workOrder", workOrder);
+        return new Promise((resolve, reject) => {
+            $http
+                .delete(`${firebaseURL}workOrder/${workOrder.id}.json`)
+                .success(function(objectFromFirebase) {
+                  console.log("objectFromFirebase", objectFromFirebase);
+                    resolve();
+                });
+        });
+    };
+
     var updateClientInfo = function(id, newItem) {
         return new Promise((resolve, reject) => {
             $http.put(
@@ -133,13 +164,43 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
+    var updateJobData = function(id, newWorkOrder, clientId) {
+        return new Promise((resolve, reject) => {
+            $http.put(
+              `${firebaseURL}workOrder/${id}.json`,
+            JSON.stringify({
+                        metals: newWorkOrder.metals,
+                        stones: newWorkOrder.stones,
+                        size: newWorkOrder.size,
+                        value: newWorkOrder.value,
+                        description: newWorkOrder.description,
+                        centerStone: newWorkOrder.centerStone,
+                        prongs: newWorkOrder.prongs,
+                        shanks: newWorkOrder.shanks,
+                        other: newWorkOrder.other,
+                        price: newWorkOrder.price,
+                        date: newWorkOrder.date,
+                        clientId: clientId
+                })
+            )
+                .success(
+                    function(objectFromFirebase) {
+                        resolve(objectFromFirebase);
+                    }
+                );
+        });
+    };
+
 
     return {
         getClientList: getClientList,
         postNewClient: postNewClient,
         deleteClient: deleteClient,
+        deleteJob: deleteJob,
         getSingleClient: getSingleClient,
+        getSingleJob: getSingleJob,
         updateClientInfo: updateClientInfo,
+        updateJobData: updateJobData,
         getWorkOrders: getWorkOrders,
         postClientJob: postClientJob
     };
