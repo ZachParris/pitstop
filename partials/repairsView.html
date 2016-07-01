@@ -10,10 +10,10 @@
       <a ng-href="#/intake/{{selectedClient.id}}" class="btn">Add New Job</a>
       </div>
    </div>
-<div class="row grey lighten-2 z-depth-3">
+<div class="row z-depth-3">
     <div ng-href="#/client/intake/{{selectedClient.id}}" ng-repeat="item in currentClientJobs | filter: searchText">
 
-         <div class="repairCard col s4 z-depth-2">
+         <div class="repairCard col s4 z-depth-1">
             <a href="#/intake/{{currentClientJobs.clientId}/edit">
             <div class="ringIntake">
               <h4>Ring Description</h4>

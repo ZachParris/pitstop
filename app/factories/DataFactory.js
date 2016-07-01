@@ -47,14 +47,13 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
 
     var getSingleJob = function(clientId) {
       let selectedJob = [];
-      var user = AuthFactory.getUser();
-        console.log("clientId", clientId);
         return new Promise((resolve, reject) => {
-            $http.get(`${firebaseURL}workOrder.json`)
+            $http.get(`${firebaseURL}workOrder/${clientId}.json`)
                 .success(function(orderObject) {
+                  console.log("orderObject", orderObject);
                  var jobCollection = orderObject;
                  Object.keys(jobCollection).forEach(function(key){
-                   if(jobCollection[key].clientId === user.id) {
+                   if(jobCollection[key].clientId === clientId) {
                      jobCollection[key].id = key;
                      selectedJob.push(jobCollection[key]);
                    };

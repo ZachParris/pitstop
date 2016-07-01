@@ -10,7 +10,6 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
 
 
     DataFactory.getClientList().then(function(itemCollection){
-        console.log("itemCollection from promise", itemCollection);
         $scope.clients = itemCollection;
     });
 
