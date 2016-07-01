@@ -6,7 +6,7 @@ app.controller("ServiceEditCtrl", function($scope, $window, $location, $routePar
   $scope.workOrder = [];
   $scope.selectedJob = {};
 
-    DataFactory.getSingleClient().then(function(jobCollection){
+    DataFactory.getWorkOrders().then(function(jobCollection){
           console.log("jobCollection", jobCollection);
             $scope.workOrder = jobCollection;
 
@@ -17,16 +17,6 @@ app.controller("ServiceEditCtrl", function($scope, $window, $location, $routePar
 
         console.log("workOrder", $scope.workOrder);
 
-        // var displaySelectedJob = function() {
-        //   if($location.path() === `/client/${$routeParams.id}`){
-        //     DataFactory.getSingleClient($routeParams.id).then(function(data) {
-        //       console.log("data", data);
-        //       $scope.selectedClient = data;
-        //     });
-        //   }
-        // };
-        //
-        // displaySelectedJob();
 
     $scope.addWorkOrder = function(){
       DataFactory.updateJobData($routeParams.clientId, $scope.workOrder)
