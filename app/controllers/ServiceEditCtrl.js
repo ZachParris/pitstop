@@ -1,16 +1,27 @@
-"use strict";
+  "use strict";
 
 app.controller("ServiceEditCtrl", function($scope, $window, $location, $routeParams, DataFactory) {
-  $scope.title = "Edit";
+  $scope.title = "Update";
   $scope.submitButtonText = "Update";
-  $scope.workOrder = [];
-  $scope.selectedJob = {};
+  $scope.workOrder = {
+      metals: "",
+      stones: "",
+      size: "",
+      value: "",
+      description: "",
+      centerStones:"",
+      prongs: "",
+      shanks:"",
+      other: "",
+      price: "",
+      date: ""
+  };
 
     DataFactory.getWorkOrders().then(function(jobCollection){
           console.log("jobCollection", jobCollection);
             $scope.workOrder = jobCollection;
 
-            $scope.selectedJob = $scope.workOrder.filter(function(job) {
+            $scope.workOrder = $scope.workOrder.filter(function(job) {
                 return job.id === $routeParams.id;
             })[0];
         });
