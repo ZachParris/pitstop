@@ -7,8 +7,8 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
     $rootScope.clientLogoutShow = true;
     $rootScope.clientAddShow = false;
     $scope.clients = [];
-    $scope.selectedClient = {};
-    $scope.$watch($scope.selectedClient);
+    $rootScope.selectedClient = {};
+    $scope.$watch($rootScope.selectedClient);
     $scope.workOrder = [];
     $rootScope.currentClientJobs = [];
 
@@ -17,7 +17,7 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
         console.log("itemCollection from promise", itemCollection);
         $scope.clients = itemCollection;
 
-        $scope.selectedClient = $scope.clients.filter(function(client) {
+        $rootScope.selectedClient = $scope.clients.filter(function(client) {
             return client.id === $routeParams.id;
         })[0];
     });
