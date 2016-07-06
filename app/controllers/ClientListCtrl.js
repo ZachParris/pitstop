@@ -10,7 +10,6 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
 
 
     DataFactory.getClientList().then(function(itemCollection){
-        console.log("itemCollection from promise", itemCollection);
         $scope.clients = itemCollection;
     });
 
@@ -23,10 +22,10 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
         })[0];
         });
         DataFactory.getSingleClient($routeParams.id);
-        
+
     };
 
-  
+
     $scope.clientDelete = function(currentClient){
         DataFactory.deleteClient(currentClient).then(function(){
             DataFactory.getClientList().then(function(data) {
@@ -35,12 +34,6 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
                 }
             );
         });
-    };
-
-    $scope.inputChange = function(item){
-        DataFactory.updateClientInfo(item)
-            .then(function(response){
-            });
     };
 
     $scope.displayClients = function() {
@@ -52,5 +45,5 @@ app.controller("ClientListCtrl", function($scope, $location, $rootScope, $routeP
         }
         };
             $scope.displayClients();
-    
+
     });

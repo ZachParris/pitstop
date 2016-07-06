@@ -1,28 +1,32 @@
 <div class= "row">
 <div class="row search-div">
     <div class="col s8 offset-s4">
-      <h3>{{title}}</h3>
+      <h3 class="blue-text text-darken-3">{{title}}</h3>
     </div>
    <div class="col s4 offset-s4 search-input">
       <input type="text" placeholder="Search Clients" ng-model="searchText">
    </div>
      <div class="col s4 offset-s4">
-    <a ng-href="#/client/add" class="btn z-depth-3">{{submitButtonText}}</a>
+    <a ng-href="#/client/add" class="btn z-depth-3  blue darken-3">{{submitButtonText}}</a>
   </div>
 </div>
-        <div class="row grey lighten-2 z-depth-3">
+        <div class="row">
             <div ng-repeat="client in clients | filter: searchText">
-              <div class="col s4 z-depth-3">
-                <a ng-href="#/client/{{client.id}}">
-                  <h4>{{client.name}}</h4>
-                  <h5>{{client.email}}</h5>
-                  <h5>{{client.phone}}</h5>
-                  <h5>{{client.address}}</h5>
-                </a>
-                  <div class="col s4 offset-s2">
-                      <button class="btn z-depth-2" ng-click="clientDelete(client)">Remove</button>
-                  </div>
-        </div>
+                <div class="col s4">
+                  <div class="card blue lighten-5">
+                    <div class="card-content white-text truncate">
+                      <a ng-href="#/client/{{client.id}}">
+                        <h5>{{client.name}}</h5>
+                        <h8>Email: {{client.email}}</h8><br>
+                        <h8>Phone: {{client.phone}}</h8><br>
+                        <h8>Address: {{client.address}}</h8><br><br>
+                      </a>
+                      <div class="col s4 offset-s2">
+                        <button class="btn fa fa-trash z-depth-2  blue darken-3" ng-click="clientDelete(client)"></button>
+                      </div>
+                    </div>
+                </div>
+                </div>
       </div>
     </div>
  </div>

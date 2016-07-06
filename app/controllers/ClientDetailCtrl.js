@@ -33,14 +33,14 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
     };
 
 
-  $scope.displayClientWorkOrders = function(clientId) {
+  $scope.displayClientWorkOrders = function() {
       DataFactory.getWorkOrders().then(function(response) {
       $rootScope.currentClientJobs = [];
         response.forEach(function(job) {
         if (job.clientId === $routeParams.id) {
           $rootScope.currentClientJobs.push(job);
           $scope.$apply();
-        } 
+        }
       });
       console.log(response);
     });
@@ -53,6 +53,3 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
 
 
 });
- 
-
-    

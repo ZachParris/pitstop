@@ -67,6 +67,13 @@ app.config(function($routeProvider) {
       isAuth
     }
   }).
+  when('/intake/:id/edit', {
+    templateUrl: 'partials/intakeView.html',
+    controller: "ServiceEditCtrl",
+    resolve: {
+      isAuth
+    }
+  }).
   when('/login', {
     templateUrl: 'partials/login.html',
     controller: "LoginCtrl"
