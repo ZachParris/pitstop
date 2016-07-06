@@ -1,8 +1,9 @@
   "use strict";
 
-app.controller("ServiceEditCtrl", function($scope, $window, $location, $routeParams, DataFactory) {
+app.controller("ServiceEditCtrl", function($scope, $window, $location, $rootScope, $routeParams, DataFactory) {
   $scope.title = "Update";
   $scope.submitButtonText = "Update";
+  // $rootScope.selectedClient;
   $scope.workOrder = {
       metals: "",
       stones: "",
@@ -30,10 +31,14 @@ app.controller("ServiceEditCtrl", function($scope, $window, $location, $routePar
 
 
     $scope.addWorkOrder = function(){
-      DataFactory.updateJobData($routeParams.clientId, $scope.workOrder)
+      let workOrderId = $routeParams.id;
+      let clientId = $rootScope.selectedClient.uid;
+      console.log("clientId", $rootScope.selectedClient.uid);
+      console.log("workOrderId", $routeParams.id);
+      DataFactory.updateJobData(workOrderId, $scope.workOrder, clientId)
             .then(function successCallback(response) {
                 console.log(response);
-                $window.location.assign(`/#/client/${$routeParams.id}`);
+                $window.location.assign(`/#/client/${clientId}`);
             });
     };
 
