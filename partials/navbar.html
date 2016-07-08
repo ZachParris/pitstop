@@ -2,13 +2,19 @@
   <nav class="nav blue darken-3">
     <div class="nav-wrapper">
       <img class="nav-img" src="img/main-logo.png">
-      <a href="#" class="button-collapse nav-hamburger nav-link">
       <ul class="right hide-on-med-and-down">
         <li ng-show="clientListShow"><a href="/#/client/list">View Clients</a></li>
         <li ng-show="clientAddShow"><a href="/#/client/add">Add Clients</a></li>
         <li ng-show="clientLogoutShow"><a href="/#/logout">Logout</a></li>
       </ul>
-  </a>
+      <a href="#" ng-show="isActive" class="right nav-hamburger nav-link button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="400" data-closeonclick="false">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
+  <ul id="nav-mobile" >
+    <li ng-show="clientListShow"><a href="/#/client/list">View Clients</a></li>
+    <li ng-show="clientAddShow"><a href="/#/client/add">Add Clients</a></li>
+    <li ng-show="clientLogoutShow"><a href="/#/logout">Logout</a></li>
+  </ul>
     </div>
   </nav>
 </div>

@@ -42,13 +42,5 @@ app.controller("ServiceEditCtrl", function($scope, $window, $location, $rootScop
             });
     };
 
-    $scope.workOrderDelete = function(currentJob) {
-          DataFactory.deleteJob(currentJob).then(function() {
-            DataFactory.getWorkOrderList().then(function(data) {
-              $scope.clients = data;
-              $scope.$apply();
-            });
-          });
-        };
 
   });

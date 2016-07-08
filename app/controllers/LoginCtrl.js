@@ -10,6 +10,7 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
 
   if($location.path() === "/logout") {
     ref.unauth();
+    $rootScope.isActive = false;
     $rootScope.addClientShow = false;
     $rootScope.findClientShow = false;
     $rootScope.clientLogoutShow = false;
@@ -37,6 +38,7 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
       .then(() => {
         DataFactory.getClientList().then(function(data) {
           $scope.clients = data;
+          $rootScope.isActive = true;
           $rootScope.clientListShow = true;
           $rootScope.clientLogoutShow = true;
           if($scope.clients.length === 0){
