@@ -48,6 +48,14 @@ app.controller("ClientDetailCtrl", function($scope, $routeParams, $rootScope, $l
 
   $scope.displayClientWorkOrders($routeParams.id);
 
+  $scope.workOrderDelete = function(currentJob) {
+    console.log("currentJob", currentJob);
+        DataFactory.deleteJob(currentJob).then(function() {
+            $scope.displayClientWorkOrders();
+        });
+      };
+
+
 
 
 

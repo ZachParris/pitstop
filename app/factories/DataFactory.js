@@ -98,7 +98,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                         size: workOrder.size,
                         value: workOrder.value,
                         description: workOrder.description,
-                        centerStone: workOrder.centerStone,
+                        centerStones: workOrder.centerStones,
                         prongs: workOrder.prongs,
                         shanks: workOrder.shanks,
                         other: workOrder.other,
@@ -131,11 +131,11 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
         });
     };
 
-      var deleteJob = function(workOrder) {
-      console.log("workOrder", workOrder);
+      var deleteJob = function(id) {
+      console.log("workOrder", id);
         return new Promise((resolve, reject) => {
             $http
-                .delete(`${firebaseURL}workOrder/${workOrder.id}.json`)
+                .delete(`${firebaseURL}workOrder/${id}.json`)
                 .success(function(objectFromFirebase) {
                   console.log("objectFromFirebase", objectFromFirebase);
                     resolve();
@@ -173,7 +173,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                         size: newWorkOrder.size,
                         value: newWorkOrder.value,
                         description: newWorkOrder.description,
-                        centerStone: newWorkOrder.centerStone,
+                        centerStones: newWorkOrder.centerStones,
                         prongs: newWorkOrder.prongs,
                         shanks: newWorkOrder.shanks,
                         other: newWorkOrder.other,
