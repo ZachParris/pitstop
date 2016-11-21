@@ -85,14 +85,17 @@ app.config(function($routeProvider) {
   otherwise('/');
 });
 
-app.run(($location) => {
+app.run(($location, fireconfig) => {
+   firebase.initializeApp(fireconfig.fireconfig);
+   firebase.auth().signOut;
 
-  let clientListRef = new Firebase("https://pitstop-app-zp.firebaseio.com/");
-  clientListRef.unauth();
-
-  clientListRef.onAuth(authData => {
-    if (!authData) {
-      $location.path("/login");
-    }
-  });
-  });
+   firebase.auth().onAuthStateChanged(function(user) {
+     if(user) {
+       console.log("User logged in", user.uid);
+       let currentUserId = user.uid;
+       let userName = user.displayName;
+     } else {
+       $location.path("/login");
+     }
+   });
+   });
