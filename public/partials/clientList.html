@@ -1,32 +1,32 @@
 <div class= "row">
-<div class="row search-div">
+  <div class="row search-div">
     <div class="col s8 offset-s4">
-      <h3 class="blue-text text-darken-3">{{title}}</h3>
+      <h4 class="blue-grey-text text-darken-3">{{title}}</h4>
     </div>
-   <div class="col s4 offset-s4 search-input">
+    <div class="col s4 offset-s4 search-input">
       <input type="text" placeholder="Search Clients" ng-model="searchText">
    </div>
-     <div class="col s4 offset-s4">
-    <a ng-href="#/client/add" class="btn z-depth-3  blue darken-3">{{submitButtonText}}</a>
-  </div>
-</div>
-        <div class="row">
-            <div ng-repeat="client in clients | filter: searchText">
-                <div class="col s4">
-                  <div class="card blue lighten-5">
-                    <div class="card-content white-text truncate">
-                      <a ng-href="#/client/{{client.id}}">
-                        <h5>{{client.name}}</h5>
-                        <h8>Email: {{client.email}}</h8><br>
-                        <h8>Phone: {{client.phone}}</h8><br>
-                        <h8>Address: {{client.address}}</h8><br><br>
-                      </a>
-                      <div class="col s4 offset-s2">
-                        <button class="btn fa fa-trash z-depth-2  blue darken-3" ng-click="clientDelete(client)"></button>
-                      </div>
-                    </div>
-                </div>
-                </div>
+   <div class="col s4 offset-s4">
+     <a ng-href="#/client/add" class="btn z-depth-3 blue-grey darken-4 darken-3">{{submitButtonText}}</a>
+   </div>
+ </div>
+<div class="row">
+  <div ng-repeat="client in clients | filter: searchText">
+    <div class="col s4">
+      <div class="card">
+          <div class="card-content truncate">
+            <a ng-href="#/client/{{client.id}}">
+              <h5 class="blue-grey-text">{{client.name}}</h5>
+              <h8 class="blue-grey-text">Email: {{client.email}}</h8><br>
+              <h8 class="blue-grey-text">Phone: {{client.phone}}</h8><br>
+              <h8 class="blue-grey-text">Address: {{client.address}}</h8><br><br>
+            </a>
+            <div class="col s4 offset-s2">
+              <button class="btn fa fa-trash z-depth-2  blue-grey darken-3" ng-click="clientDelete(client)"></button>
+            </div>
+          </div>
+      </div>
+      </div>
       </div>
     </div>
  </div>

@@ -3,7 +3,6 @@
 app.controller("ServiceEditCtrl", function($scope, $window, $location, $rootScope, $routeParams, DataFactory) {
   $scope.title = "Update";
   $scope.submitButtonText = "Update";
-  // $rootScope.selectedClient;
   $scope.workOrder = {
       metals: "",
       stones: "",
