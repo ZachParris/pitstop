@@ -34,7 +34,7 @@ This will show at:
 
 ## Summary
 
-This application will ensure a better customer experience, and a thorough inspections of each piece of jewelry, every time.
+This is my front-end capstone from my first six months at NSS. A jewelry repair intake app for jewelry stores I wanted to give abilities for the user to add customers and take in new repairs more efficiently. Written in JavaScript, utilizing AngularJS with Materialize and Firebase.
 
 ##Stretch Goals
 
