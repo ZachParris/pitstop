@@ -23,13 +23,13 @@ This will show at:
 ##### Splash / Login
 <img src="https://github.com/ZachParris/pitstop/blob/master/screenshots/LoginView.jpg" width="200">
 
-##### Splash / Login
+##### Client list
 <img src="https://github.com/ZachParris/pitstop/blob/master/screenshots/ClientList.jpg" width="200">
 
-##### Splash / Login
+##### Client's Detail View
 <img src="https://github.com/ZachParris/pitstop/blob/master/screenshots/ClientDetail.jpg" width="200">
 
-##### Splash / Login
+##### Repair intake form
 <img src="https://github.com/ZachParris/pitstop/blob/master/screenshots/IntakeForm.jpg" width="200">
 
 ## Summary
