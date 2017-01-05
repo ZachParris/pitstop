@@ -1,0 +1,41 @@
+ <div ng-controller="IntakeCtrl">
+ <div class="col s8 offset-s4">
+        <h3 class="blue-grey-text text-darken-3">Client's History:</h3>
+      </div>
+
+   <div class= "row">
+   <div class="row search-div">
+      <div class="col s4 offset-s4 search-input">
+         <input type="text" placeholder="Search Jobs" ng-model="searchText">
+      <a ng-href="#/intake/{{selectedClient.id}}" class="btn blue-grey darken-3">Add New</a>
+      </div>
+   </div>
+<div class="row z-depth-3">
+    <div ng-repeat="item in currentClientJobs | filter: searchText">
+
+         <div class="col s4 z-depth-1">
+           <span class="truncate">
+             <a ng-href="#/intake/{{item.id}}/edit">
+                <h5>Ring Description</h5>
+                <p>Description: {{item.description}}</p><br>
+                <p>Metal: {{item.metals}}</p><br>
+                <p>Stones: {{item.stones}}</p><br>
+                <p>Value: {{item.value}}</p><br>
+                <p>Size: {{item.size}}</p><br>
+                <h5>Required Repair</h5>
+                <p>Center Stones: {{item.centerStones}}</p><br>
+                <p>Prongs: {{item.prongs}}</p><br>
+                <p>Shanks: {{item.shanks}}</p><br>
+                <p>Other: {{item.other}}</p><br>
+                <h5>Your Quote</h5>
+                <p>Price: {{item.price}}</p><br>
+                <p>Date: {{item.date}}</p><br>
+            </a>
+            <div class="col s4 center-align offset-s2">
+              <button class="btn fa fa-trash z-depth-2 blue-grey darken-3" ng-click="workOrderDelete(item.id)"></button>
+            </div>
+          </span>
+         </div>
+       </div>
+   </div>
+ </div>

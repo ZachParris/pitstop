@@ -56,7 +56,7 @@ app.factory("DataFactory", function($http, firebaseURL, AuthFactory) {
                    if(jobCollection[key].clientId === clientId) {
                      jobCollection[key].id = key;
                      selectedJob.push(jobCollection[key]);
-                   };
+                   }
                  });
                  console.log(jobCollection);
                     resolve(clientId);

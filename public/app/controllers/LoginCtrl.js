@@ -1,7 +1,5 @@
 "use strict";
 app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL, AuthFactory, DataFactory){
-  let ref = new Firebase(firebaseURL);
-
 
   $scope.account = {
     email: "",
@@ -9,16 +7,17 @@ app.controller('LoginCtrl', function($scope, $rootScope, $location, firebaseURL,
   };
 
   if($location.path() === "/logout") {
-    ref.unauth();
+    firebase.auth().signOut;
     $rootScope.isActive = false;
     $rootScope.addClientShow = false;
     $rootScope.findClientShow = false;
-    $rootScope.clientLogoutShow = false;
+    $rootScope.clientLogoutShow = true;
   }
 
   $scope.register = () => {
     console.log("you clicked register");
-    ref.createUser({
+    console.log($scope.account.email);
+    AuthFactory.registerWithEmail({
       email: $scope.account.email,
       password: $scope.account.password
     }, (error, userData) => {
