@@ -25,7 +25,7 @@ This will show at:
 
 ## Summary
 
-This application will ensure a better customer experience, and a thorough inspections of each piece of jewelry, every time. 
+This application will ensure a better customer experience, and a thorough inspections of each piece of jewelry, every time.
 
 ##Stretch Goals
 
